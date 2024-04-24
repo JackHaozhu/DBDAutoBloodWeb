@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="基础逻辑完成，ui框架制作中" />
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="update">
+      <change afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/DBDAutoBloodWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/DBDAutoBloodWeb.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JackHaozhu"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/JackHaozhu/DBDAutoBloodWeb.git",
+    "accountId": "6d02e8c0-43c5-4570-840a-6f66b467457d"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -32,11 +48,13 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.DAB.executor": "Run",
+    "Python.DBDAutoBloodWeb.executor": "Run",
     "Python.GUI.executor": "Run",
     "Python.QTSide6UI.executor": "Run",
     "Python.getGamePosition.executor": "Run",
     "Python.gui.executor": "Run",
     "Python.guitest.executor": "Run",
+    "Python.main.executor": "Run",
     "Python.run_DAB.executor": "Run",
     "Python.test.executor": "Run",
     "Python.test_source2.executor": "Run",
@@ -44,7 +62,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "E:/PyCharm/Projects/DBDAutoBloodWeb/.venv/Scripts/pyrcc5.exe",
-    "settings.editor.selected.configurable": "preferences.externalTools"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
     "ChangesTree.GroupingKeys": [
@@ -84,11 +102,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713969617827</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <option name="closed" value="true" />
+      <created>1713969875705</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713969875705</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="基础逻辑完成，ui框架制作中" />
-    <option name="LAST_COMMIT_MESSAGE" value="基础逻辑完成，ui框架制作中" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
