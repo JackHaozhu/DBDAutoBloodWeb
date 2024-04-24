@@ -1,0 +1,18 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icon_resources/escapeCake.png</file>
+  </qresource>
+  <qresource prefix="original">
+    <file>icon_resources/关闭.svg</file>
+    <file>icon_resources/设置.svg</file>
+    <file>icon_resources/首页.svg</file>
+    <file>icon_resources/统计.svg</file>
+    <file>icon_resources/主页.svg</file>
+    <file>icon_resources/最小化.svg</file>
+  </qresource>
+  <qresource prefix="chosen">
+    <file>icon_resources/设置选中.svg</file>
+    <file>icon_resources/统计-选中.png</file>
+    <file>icon_resources/主页-选中.svg</file>
+  </qresource>
+</RCC>

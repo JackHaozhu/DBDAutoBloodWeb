@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow{
+    background: rgb(30, 31, 34)
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>1</horstretch>
+     <verstretch>1</verstretch>
+    </sizepolicy>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QTabWidget" name="typeChoose">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+/* 设置QTabWidget的整体背景透明 */
+QTabWidget {
+    background: transparent;
+    border: none;
+}
+
+QTabWidget::QWidget{
+    background: transparent;
+}
+
+QTabWidge::pane {
+    border-top: 1px solid #CCCCCC; /* 添加一条1像素宽的灰色上边框（示例色值） */
+}
+
+QTabWidget::tab-bar {
+    alignment: center; /* 设置选项卡文本居中对齐 */
+}
+
+/* 设置Tab项的样式 */
+QTabBar::tab {
+    background: transparent;
+    border: none;
+    
+    font: 15pt &quot;微软雅黑&quot;;
+    font-size: 15px;
+    color: #99BDC3;
+    margin-right: 0px;
+    width: 80px;
+    height: 30px;
+    border-radius: 15px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+/* 鼠标悬停时的样式 */
+QTabBar::tab:hover {
+    background: lightgray; /* 设置鼠标悬停时的背景色 */
+}
+
+/* 选中Tab项的样式 */
+QTabBar::tab:selected {
+    margin-top: 8px; /* 设置选中Tab项不放大 */
+    background-color: rgb(165, 165, 165);
+}
+</string>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>杀手</string>
+        </attribute>
+        <widget class="QTabWidget" name="killerCharacter">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>801</width>
+           <height>561</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="tabPosition">
+          <enum>QTabWidget::West</enum>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>test1</string>
+          </attribute>
+         </widget>
+         <widget class="QWidget" name="tab_4">
+          <attribute name="title">
+           <string/>
+          </attribute>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>逃生者</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

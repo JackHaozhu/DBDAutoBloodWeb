@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DBDAutoBloodWeb.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GUI/run_DAB.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GUI/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/DBDAutoBloodWeb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/GUI.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/getGamePosition.py" afterDir="false" />
-    </list>
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="基础逻辑完成，ui框架制作中" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +45,11 @@
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "E:/PyCharm/Projects/DBDAutoBloodWeb/.venv/Scripts/pyrcc5.exe",
     "settings.editor.selected.configurable": "preferences.externalTools"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -83,6 +76,19 @@
       <option name="presentableId" value="Default" />
       <updated>1713746498298</updated>
     </task>
+    <task id="LOCAL-00001" summary="基础逻辑完成，ui框架制作中">
+      <option name="closed" value="true" />
+      <created>1713969617827</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713969617827</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="基础逻辑完成，ui框架制作中" />
+    <option name="LAST_COMMIT_MESSAGE" value="基础逻辑完成，ui框架制作中" />
   </component>
 </project>
