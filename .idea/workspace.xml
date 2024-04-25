@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="ui读取本地屠夫缩略图">
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="添加统计页彩蛋">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/dirInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/guiresources.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/guiresources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/guiresources.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/guiresources.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/icon_resources/K35_TheUnknown_Portrait.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -130,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714046598098</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="添加统计页彩蛋">
+      <option name="closed" value="true" />
+      <created>1714049453808</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714049453808</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,7 +160,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="测试，0.6匹配度手电、医疗包、工具箱" />
     <MESSAGE value="ui读取本地屠夫缩略图" />
-    <option name="LAST_COMMIT_MESSAGE" value="ui读取本地屠夫缩略图" />
+    <MESSAGE value="添加统计页彩蛋" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加统计页彩蛋" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
