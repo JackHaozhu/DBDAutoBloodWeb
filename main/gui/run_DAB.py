@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import QMainWindow, QRadioButton
 from PyQt5.QtGui import QPixmap
 from DAB import Ui_MainWindow  # 导入通过pyuic5转换生成的UI文件中的类
 
+
+
 if dirInfo.get_program_install_location('黎明杀机') is not None:
     game_dir = dirInfo.get_program_install_location('黎明杀机')
 ui_dir = game_dir + r'\DeadByDaylight\Content\UI\Icons'
@@ -21,6 +23,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.home.clicked.connect(self.homePage)
         self.statistics.clicked.connect(self.statisticsPage)
         self.radioButton.clicked.connect(self.settingsPage)
+        # 统计页面彩蛋
+        self.developingButton.clicked.connect(self.devButtonEasterEgg)
         # 初始化页面至 主页-杀手
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
@@ -40,6 +44,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def settingsPage(self):
         self.contentStackedWidget.setCurrentIndex(2)
 
+    def devButtonEasterEgg(self):
+        current_text = self.developingButton.text()
+        new_text = dirInfo.easter_egg[current_text]
+        self.developingButton.setText(new_text)
+
+
+
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
             # mousePressPos -> 鼠标全局位置
@@ -53,10 +64,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for name in killers:
             target_img_dir = char_dir + dirInfo.character[name]
             target_img_dir = target_img_dir.replace('\\', '/')
-            print(name, target_img_dir)
+            # print(name, target_img_dir)
             button = self.findChild(QRadioButton, name)
             if button:
-                print('Button Found!')
+                # print('Button Found!')
                 button.setStyleSheet(f'QRadioButton {{ border-image: url({target_img_dir}); }}')
 
     def mouseMoveEvent(self, event):

@@ -841,7 +841,7 @@ class Ui_MainWindow(object):
         self.developingButton.setSizePolicy(sizePolicy)
         self.developingButton.setStyleSheet("QPushButton{\n"
 "    height: 100px;\n"
-"    width: 320px;\n"
+"    width: 640px;\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #4d4d4d;\n"
 "    font: 20pt \"微软雅黑\";\n"
