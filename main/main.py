@@ -10,4 +10,4 @@ target_list = (cv2.imread(r"D:\SteamLibrary\steamapps\common\Dead by Daylight\De
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-DBDAutoBloodWeb.click_target(target_list)
+# DBDAutoBloodWeb.click_target(target_list)

@@ -4,10 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="update">
-      <change afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="测试，0.6匹配度手电、医疗包、工具箱">
+      <change afterPath="$PROJECT_DIR$/dev/DABHints.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/dicGen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/guitest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/gui/config.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/gui.ui" beforeDir="false" afterPath="$PROJECT_DIR$/dev/gui.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/guiresources.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/guiresources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/guiresources.qrc" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/guiresources.qrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/guitest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/escapeCake.png" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/escapeCake.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/主页-选中.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/主页-选中.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/主页.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/主页.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/关闭.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/关闭.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/最小化.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/最小化.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/统计-选中.png" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/统计-选中.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/统计.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/统计.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/设置.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/设置.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/设置选中.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/设置选中.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/icon_resources/首页.svg" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/icon_resources/首页.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/run_DAB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/untitled.ui" beforeDir="false" afterPath="$PROJECT_DIR$/dev/untitled.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/DBDAutoBloodWeb.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/DBDAutoBloodWeb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/getGamePosition.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,18 +51,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JackHaozhu"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JackHaozhu&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/JackHaozhu/DBDAutoBloodWeb.git",
-    "accountId": "6d02e8c0-43c5-4570-840a-6f66b467457d"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JackHaozhu/DBDAutoBloodWeb.git&quot;,
+    &quot;accountId&quot;: &quot;6d02e8c0-43c5-4570-840a-6f66b467457d&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -51,9 +78,11 @@
     "Python.DBDAutoBloodWeb.executor": "Run",
     "Python.GUI.executor": "Run",
     "Python.QTSide6UI.executor": "Run",
+    "Python.dicGen.executor": "Run",
     "Python.getGamePosition.executor": "Run",
     "Python.gui.executor": "Run",
     "Python.guitest.executor": "Run",
+    "Python.localResources.executor": "Run",
     "Python.main.executor": "Run",
     "Python.run_DAB.executor": "Run",
     "Python.test.executor": "Run",
@@ -75,6 +104,7 @@
       <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\GUI" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\main\gui" />
       <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\GUI" />
     </key>
   </component>
@@ -110,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713969875705</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="测试，0.6匹配度手电、医疗包、工具箱">
+      <option name="closed" value="true" />
+      <created>1713976010341</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713976010341</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -127,6 +165,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="基础逻辑完成，ui框架制作中" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="测试，0.6匹配度手电、医疗包、工具箱" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试，0.6匹配度手电、医疗包、工具箱" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main/gui/dirInfo.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main/gui/dirInfo.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

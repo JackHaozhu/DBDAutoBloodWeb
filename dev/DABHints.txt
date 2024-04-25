@@ -1,0 +1,6 @@
+
+无边框窗口
+
+添加  import
+在 'class Ui_MainWindow(object):'的'def setupUi(self, MainWindow):'中添加
+MainWindow.setWindowFlag(Qt.FramelessWindowHint)

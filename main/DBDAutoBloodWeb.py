@@ -18,7 +18,7 @@ skip = (int(1362 * screen_width / 3840), int(1143 * screen_width / 3840))
 # pyautogui的click无法直接点血网，故用长按0.1秒替代
 def click():
     pyautogui.mouseDown()
-    time.sleep(0.1)
+    time.sleep(0.2)
     pyautogui.mouseUp()
 
 
@@ -52,13 +52,13 @@ def click_target(target_list):
                                      max_loc[1] + resized_target.shape[0] // 2)
                     pyautogui.moveTo(target_center)
                     click()
-                    time.sleep(0.1)
+                    time.sleep(0.2)
                     pyautogui.moveTo(0, screen_height)
-                    time.sleep(1.5)
+                    time.sleep(2)
             if (i == len(target_list)):
                 pyautogui.moveTo(skip)
                 click()
-                time.sleep(0.1)
+                time.sleep(0.2)
                 pyautogui.moveTo(0, screen_height)
                 time.sleep(5)
                 break
