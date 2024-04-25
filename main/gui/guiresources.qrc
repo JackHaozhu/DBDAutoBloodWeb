@@ -1,6 +1,6 @@
 <RCC>
   <qresource prefix="icon">
-    <file>icon_resources/K35_TheUnknown_Portrait.png</file>
+    <file>icon_resources/下拉箭头.svg</file>
     <file>icon_resources/escapeCake.png</file>
   </qresource>
   <qresource prefix="original">

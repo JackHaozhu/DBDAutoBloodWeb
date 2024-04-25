@@ -55,7 +55,7 @@ class Ui_MainWindow(object):
         self.titleLabel = QtWidgets.QLabel(self.widgetStatusBar)
         self.titleLabel.setStyleSheet("QLabel#titleLabel{\n"
 "    color: white;\n"
-"    font: 14pt \"微软雅黑\";\n"
+"    font: 16px \"微软雅黑\";\n"
 "    margin-left: 0px;\n"
 "    margin-right: 10px;\n"
 "    margin-top: 0px;\n"
@@ -168,9 +168,9 @@ class Ui_MainWindow(object):
         self.home.setAutoFillBackground(False)
         self.home.setStyleSheet("QRadioButton{\n"
 "    border-image: url(:/original/icon_resources/主页.svg);\n"
-"    border-image-width: 10px;\n"
-"    border-image-height: 10px;\n"
-"    text: \"主页\";\n"
+"}\n"
+"QRadioButton:checked{\n"
+"    border-image: url(:/chosen/icon_resources/主页-选中.svg);\n"
 "}")
         self.home.setText("")
         self.home.setIconSize(QtCore.QSize(30, 30))
@@ -183,7 +183,12 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.statistics.sizePolicy().hasHeightForWidth())
         self.statistics.setSizePolicy(sizePolicy)
-        self.statistics.setStyleSheet("border-image: url(:/original/icon_resources/统计.svg);")
+        self.statistics.setStyleSheet("QRadioButton{\n"
+"    border-image: url(:/original/icon_resources/统计.svg);\n"
+"}\n"
+"QRadioButton:checked{\n"
+"    border-image: url(:/chosen/icon_resources/统计-选中.png)\n"
+"}")
         self.statistics.setText("")
         self.statistics.setIconSize(QtCore.QSize(30, 30))
         self.statistics.setChecked(False)
@@ -192,7 +197,13 @@ class Ui_MainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(20, 318, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout_2.addItem(spacerItem1)
         self.radioButton = QtWidgets.QRadioButton(self.mainMenu)
-        self.radioButton.setStyleSheet("border-image: url(:/original/icon_resources/设置.svg);")
+        self.radioButton.setStyleSheet("QRadioButton{\n"
+"    border-image: url(:/original/icon_resources/设置.svg);\n"
+"    margin-bottom: 5px\n"
+"}\n"
+"QRadioButton:checked{\n"
+"    border-image: url(:/chosen/icon_resources/设置选中.svg)\n"
+"}")
         self.radioButton.setText("")
         self.radioButton.setIconSize(QtCore.QSize(30, 30))
         self.radioButton.setObjectName("radioButton")
@@ -226,7 +237,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.home_widget)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.label = QtWidgets.QLabel(self.home_widget)
-        self.label.setStyleSheet("font: 75 25pt \"微软雅黑\";\n"
+        self.label.setStyleSheet("font: 75 32px \"微软雅黑\";\n"
 "color: white;")
         self.label.setObjectName("label")
         self.verticalLayout_4.addWidget(self.label)
@@ -241,14 +252,12 @@ class Ui_MainWindow(object):
 "QTabBar::tab {\n"
 "    background: transparent;\n"
 "    border: none;\n"
-"    \n"
-"    font: 10pt \"微软雅黑\";\n"
-"    font-size: 20px;\n"
+"    border-radius: 6px;\n"
+"    font: 20px \"微软雅黑\";\n"
 "    color: #99BDC3;\n"
 "    margin-right: 0px;\n"
 "    width: 100px;\n"
 "    height: 40px;\n"
-"    border-radius: 6px;\n"
 "    margin-right: 0px;\n"
 "    margin-left: 0px;\n"
 "    margin-top: 8px;\n"
@@ -297,11 +306,6 @@ class Ui_MainWindow(object):
         self.killerList.setStyleSheet("QScrollArea{\n"
 "    border: 3px solid #4d4d4d;\n"
 "    border-radius: 10px;\n"
-"}\n"
-"QScrollArea:QWidget{\n"
-"    border: none;\n"
-"    border-radius: 20px;\n"
-"    background: #272626;\n"
 "}\n"
 "QRadioButton {\n"
 "    margin: 5px;\n"
@@ -608,7 +612,7 @@ class Ui_MainWindow(object):
         self.killerTargetList.setWidgetResizable(True)
         self.killerTargetList.setObjectName("killerTargetList")
         self.killerTargetContent = QtWidgets.QWidget()
-        self.killerTargetContent.setGeometry(QtCore.QRect(0, 0, 374, 24))
+        self.killerTargetContent.setGeometry(QtCore.QRect(0, 0, 374, 18))
         self.killerTargetContent.setObjectName("killerTargetContent")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.killerTargetContent)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
@@ -621,7 +625,7 @@ class Ui_MainWindow(object):
 "    height: 60px;\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #4d4d4d;\n"
-"    font: 20pt \"微软雅黑\";\n"
+"    font: 25px \"微软雅黑\";\n"
 "    color: #99BDC3;\n"
 "}\n"
 "\n"
@@ -655,7 +659,7 @@ class Ui_MainWindow(object):
 "    width: 120px;\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #4d4d4d;\n"
-"    font: 20pt \"微软雅黑\";\n"
+"    font: 25px \"微软雅黑\";\n"
 "    color: #99BDC3;\n"
 "    margin: 20px;\n"
 "    margin-bottom: 0px;\n"
@@ -680,7 +684,7 @@ class Ui_MainWindow(object):
 "    margin-left: 20px;\n"
 "    margin-right: 20px;\n"
 "    color: #5d5d5d;\n"
-"    font: 12pt \"微软雅黑\";\n"
+"    font: 16px \"微软雅黑\";\n"
 "}")
         self.killerStopHint.setTextFormat(QtCore.Qt.AutoText)
         self.killerStopHint.setAlignment(QtCore.Qt.AlignCenter)
@@ -743,7 +747,7 @@ class Ui_MainWindow(object):
         self.survivorTargetList.setWidgetResizable(True)
         self.survivorTargetList.setObjectName("survivorTargetList")
         self.survivorTargetContent = QtWidgets.QWidget()
-        self.survivorTargetContent.setGeometry(QtCore.QRect(0, 0, 374, 610))
+        self.survivorTargetContent.setGeometry(QtCore.QRect(0, 0, 374, 18))
         self.survivorTargetContent.setObjectName("survivorTargetContent")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.survivorTargetContent)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
@@ -841,10 +845,10 @@ class Ui_MainWindow(object):
         self.developingButton.setSizePolicy(sizePolicy)
         self.developingButton.setStyleSheet("QPushButton{\n"
 "    height: 100px;\n"
-"    width: 640px;\n"
+"    width: 450px;\n"
 "    border-radius: 10px;\n"
 "    border: 2px solid #4d4d4d;\n"
-"    font: 20pt \"微软雅黑\";\n"
+"    font: 25px \"微软雅黑\";\n"
 "    color: #99BDC3;\n"
 "}\n"
 "\n"
@@ -858,20 +862,164 @@ class Ui_MainWindow(object):
         self.developingButton.setObjectName("developingButton")
         self.horizontalLayout_5.addWidget(self.developingButton)
         self.contentStackedWidget.addWidget(self.statistic_widget)
-        self.page = QtWidgets.QWidget()
-        self.page.setObjectName("page")
-        self.label_3 = QtWidgets.QLabel(self.page)
-        self.label_3.setGeometry(QtCore.QRect(190, 100, 54, 12))
-        self.label_3.setObjectName("label_3")
-        self.contentStackedWidget.addWidget(self.page)
+        self.settings_widget = QtWidgets.QWidget()
+        self.settings_widget.setObjectName("settings_widget")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.settings_widget)
+        self.verticalLayout_11.setContentsMargins(9, 9, 9, 9)
+        self.verticalLayout_11.setSpacing(9)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.settings = QtWidgets.QLabel(self.settings_widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.settings.sizePolicy().hasHeightForWidth())
+        self.settings.setSizePolicy(sizePolicy)
+        self.settings.setStyleSheet("font: 75 48px \"微软雅黑\";\n"
+"color: white;")
+        self.settings.setObjectName("settings")
+        self.verticalLayout_11.addWidget(self.settings)
+        self.scrollArea = QtWidgets.QScrollArea(self.settings_widget)
+        self.scrollArea.setStyleSheet("QScrollArea{\n"
+"    border: 3px solid #4d4d4d;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"QScrollArea:QWidget{\n"
+"    border: none;\n"
+"    background: #272626;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    width: 8px;\n"
+"    background: #272626;\n"
+"    margin: 10px 2px 10px 1px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: gray;\n"
+"    border-radius: 2px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover {\n"
+"    background: darkgray;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height: 0px;\n"
+"    width: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1283, 642))
+        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
+        self.verticalLayout_12.setObjectName("verticalLayout_12")
+        self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        self.label_2.setStyleSheet("\n"
+"    font: 32px \"微软雅黑\";\n"
+"    color: #99BDC3;")
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_12.addWidget(self.label_2)
+        self.gameDirComboBox = QtWidgets.QComboBox(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.gameDirComboBox.sizePolicy().hasHeightForWidth())
+        self.gameDirComboBox.setSizePolicy(sizePolicy)
+        self.gameDirComboBox.setStyleSheet("QComboBox{\n"
+"    height: 48px;\n"
+"    color: #cccccc;\n"
+"    font: 28px \"微软雅黑\";\n"
+"    border: 2px solid #4d4d4d;\n"
+"    border-radius: 12px;\n"
+"}\n"
+"\n"
+"QComboBox:hover{\n"
+"    border: 2px solid #8a8a8a;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down{\n"
+"    border-image: url(:/icon/icon_resources/下拉箭头.svg);\n"
+"    width: 30px;\n"
+"    height: 30px;\n"
+"    margin-top: 9px;\n"
+"    margin-right: 10px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView{\n"
+"    border: 2px solid #8a8a8a;\n"
+"    border-radius: 12px;\n"
+"    outline: none;\n"
+"    color: #cccccc;\n"
+"    font: 28px \"微软雅黑\";\n"
+"    background: #272626;\n"
+"    padding: 12px 6px 12px 6px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item{\n"
+"    border: none;\n"
+"    outline: none;\n"
+"    height: 48px;\n"
+"    border-radius: 12px;\n"
+"    background: #272626;\n"
+"}\n"
+"QComboBox QAbstractItemView::item:selected{\n"
+"    border-radius: 12px;\n"
+"    background: #313131;\n"
+"}\n"
+"QComboBox QAbstractItemView::item:hover{\n"
+"    border-radius: 12px;\n"
+"    background: #4D4D4D;\n"
+"}")
+        self.gameDirComboBox.setObjectName("gameDirComboBox")
+        self.gameDirComboBox.addItem("")
+        self.gameDirComboBox.addItem("")
+        self.verticalLayout_12.addWidget(self.gameDirComboBox)
+        spacerItem10 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem10)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.verticalLayout_11.addWidget(self.scrollArea)
+        self.saveSettings = QtWidgets.QPushButton(self.settings_widget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.saveSettings.sizePolicy().hasHeightForWidth())
+        self.saveSettings.setSizePolicy(sizePolicy)
+        self.saveSettings.setStyleSheet("QPushButton{\n"
+"    height: 50px;\n"
+"    width: 220px;\n"
+"    border-radius: 10px;\n"
+"    border: 2px solid #4d4d4d;\n"
+"    font: 20px \"微软雅黑\";\n"
+"    color: #99BDC3;\n"
+"    margin-top: 10px;\n"
+"    margin-bottom: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    background: #4d4d4d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    background: #3d3d3d\n"
+"}")
+        self.saveSettings.setObjectName("saveSettings")
+        self.verticalLayout_11.addWidget(self.saveSettings, 0, QtCore.Qt.AlignHCenter)
+        self.contentStackedWidget.addWidget(self.settings_widget)
         self.verticalLayout_3.addWidget(self.contentStackedWidget)
         self.horizontalLayout_2.addWidget(self.content)
         self.verticalLayout.addWidget(self.widgetMain)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.contentStackedWidget.setCurrentIndex(1)
-        self.chooseType.setCurrentIndex(1)
+        self.contentStackedWidget.setCurrentIndex(2)
+        self.chooseType.setCurrentIndex(0)
         self.minimizeButton.clicked.connect(MainWindow.showMinimized) # type: ignore
         self.closeButton.clicked.connect(MainWindow.close) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -890,7 +1038,11 @@ class Ui_MainWindow(object):
         self.survivorStopHint.setText(_translate("MainWindow", "点击Start以开始"))
         self.chooseType.setTabText(self.chooseType.indexOf(self.survivorTab), _translate("MainWindow", "逃生者"))
         self.developingButton.setText(_translate("MainWindow", "这里什么也没有"))
-        self.label_3.setText(_translate("MainWindow", "设置"))
+        self.settings.setText(_translate("MainWindow", "设置"))
+        self.label_2.setText(_translate("MainWindow", "游戏目录"))
+        self.gameDirComboBox.setItemText(0, _translate("MainWindow", "自动识别目录："))
+        self.gameDirComboBox.setItemText(1, _translate("MainWindow", "选择目录..."))
+        self.saveSettings.setText(_translate("MainWindow", "保存"))
 
 import guiresources
 

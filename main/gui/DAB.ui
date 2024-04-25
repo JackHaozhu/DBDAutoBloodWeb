@@ -105,7 +105,7 @@
          <property name="styleSheet">
           <string notr="true">QLabel#titleLabel{
 	color: white;
-	font: 14pt &quot;微软雅黑&quot;;
+	font: 16px &quot;微软雅黑&quot;;
 	margin-left: 0px;
 	margin-right: 10px;
 	margin-top: 0px;
@@ -302,9 +302,9 @@ QRadioButton:checked:hover{
             <property name="styleSheet">
              <string notr="true">QRadioButton{
 	border-image: url(:/original/icon_resources/主页.svg);
-	border-image-width: 10px;
-	border-image-height: 10px;
-	text: &quot;主页&quot;;
+}
+QRadioButton:checked{
+	border-image: url(:/chosen/icon_resources/主页-选中.svg);
 }</string>
             </property>
             <property name="text">
@@ -330,7 +330,12 @@ QRadioButton:checked:hover{
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">border-image: url(:/original/icon_resources/统计.svg);</string>
+             <string notr="true">QRadioButton{
+	border-image: url(:/original/icon_resources/统计.svg);
+}
+QRadioButton:checked{
+	border-image: url(:/chosen/icon_resources/统计-选中.png)
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -362,7 +367,13 @@ QRadioButton:checked:hover{
           <item>
            <widget class="QRadioButton" name="radioButton">
             <property name="styleSheet">
-             <string notr="true">border-image: url(:/original/icon_resources/设置.svg);</string>
+             <string notr="true">QRadioButton{
+	border-image: url(:/original/icon_resources/设置.svg);
+	margin-bottom: 5px
+}
+QRadioButton:checked{
+	border-image: url(:/chosen/icon_resources/设置选中.svg)
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -405,14 +416,14 @@ QStackedWidget:tab-bar {
 </string>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="home_widget">
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
                <widget class="QLabel" name="label">
                 <property name="styleSheet">
-                 <string notr="true">font: 75 25pt &quot;微软雅黑&quot;;
+                 <string notr="true">font: 75 32px &quot;微软雅黑&quot;;
 color: white;</string>
                 </property>
                 <property name="text">
@@ -433,14 +444,12 @@ QTabWidget::pane{
 QTabBar::tab {
     background: transparent;
     border: none;
-    
-    font: 10pt &quot;微软雅黑&quot;;
-    font-size: 20px;
+	border-radius: 6px;
+    font: 20px &quot;微软雅黑&quot;;
     color: #99BDC3;
     margin-right: 0px;
     width: 100px;
     height: 40px;
-    border-radius: 6px;
     margin-right: 0px;
     margin-left: 0px;
     margin-top: 8px;
@@ -511,11 +520,6 @@ QTabBar::tab:selected:hover {
                         <string notr="true">QScrollArea{
 	border: 3px solid #4d4d4d;
 	border-radius: 10px;
-}
-QScrollArea:QWidget{
-	border: none;
-	border-radius: 20px;
-	background: #272626;
 }
 QRadioButton {
 	margin: 5px;
@@ -981,8 +985,8 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                             <rect>
                              <x>0</x>
                              <y>0</y>
-                             <width>376</width>
-                             <height>592</height>
+                             <width>374</width>
+                             <height>18</height>
                             </rect>
                            </property>
                            <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1010,7 +1014,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	height: 60px;
 	border-radius: 10px;
 	border: 2px solid #4d4d4d;
-	font: 20pt &quot;微软雅黑&quot;;
+	font: 25px &quot;微软雅黑&quot;;
 	color: #99BDC3;
 }
 
@@ -1069,7 +1073,7 @@ QPushButton:pressed{
 	width: 120px;
 	border-radius: 10px;
 	border: 2px solid #4d4d4d;
-	font: 20pt &quot;微软雅黑&quot;;
+	font: 25px &quot;微软雅黑&quot;;
 	color: #99BDC3;
 	margin: 20px;
 	margin-bottom: 0px;
@@ -1101,7 +1105,7 @@ QPushButton:pressed{
 	margin-left: 20px;
 	margin-right: 20px;
 	color: #5d5d5d;
-	font: 12pt &quot;微软雅黑&quot;;
+	font: 16px &quot;微软雅黑&quot;;
 }</string>
                           </property>
                           <property name="text">
@@ -1226,7 +1230,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                           <x>0</x>
                           <y>0</y>
                           <width>374</width>
-                          <height>610</height>
+                          <height>18</height>
                          </rect>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1407,10 +1411,10 @@ QPushButton:pressed{
                 <property name="styleSheet">
                  <string notr="true">QPushButton{
 	height: 100px;
-	width: 320px;
+	width: 450px;
 	border-radius: 10px;
 	border: 2px solid #4d4d4d;
-	font: 20pt &quot;微软雅黑&quot;;
+	font: 25px &quot;微软雅黑&quot;;
 	color: #99BDC3;
 }
 
@@ -1429,20 +1433,221 @@ QPushButton:pressed{
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="page">
-             <widget class="QLabel" name="label_3">
-              <property name="geometry">
-               <rect>
-                <x>190</x>
-                <y>100</y>
-                <width>54</width>
-                <height>12</height>
-               </rect>
+            <widget class="QWidget" name="settings_widget">
+             <layout class="QVBoxLayout" name="verticalLayout_11">
+              <property name="spacing">
+               <number>9</number>
               </property>
-              <property name="text">
-               <string>设置</string>
+              <property name="leftMargin">
+               <number>9</number>
               </property>
-             </widget>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>9</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="settings">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 75 48px &quot;微软雅黑&quot;;
+color: white;</string>
+                </property>
+                <property name="text">
+                 <string>设置</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QScrollArea" name="scrollArea">
+                <property name="styleSheet">
+                 <string notr="true">QScrollArea{
+	border: 3px solid #4d4d4d;
+	border-radius: 10px;
+}
+QScrollArea:QWidget{
+	border: none;
+	background: #272626;
+}
+
+QScrollBar:vertical {
+    width: 8px;
+    background: #272626;
+	margin: 10px 2px 10px 1px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical {
+    background: gray;
+    border-radius: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: darkgray;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	background: none;
+	height: 0px;
+	width: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}</string>
+                </property>
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>1283</width>
+                   <height>642</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_12">
+                  <item>
+                   <widget class="QLabel" name="label_2">
+                    <property name="styleSheet">
+                     <string notr="true">
+    font: 32px &quot;微软雅黑&quot;;
+    color: #99BDC3;</string>
+                    </property>
+                    <property name="text">
+                     <string>游戏目录</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="gameDirComboBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+	height: 48px;
+	color: #cccccc;
+	font: 28px &quot;微软雅黑&quot;;
+	border: 2px solid #4d4d4d;
+	border-radius: 12px;
+}
+
+QComboBox:hover{
+	border: 2px solid #8a8a8a;
+}
+
+QComboBox::drop-down{
+	border-image: url(:/icon/icon_resources/下拉箭头.svg);
+	width: 30px;
+	height: 30px;
+	margin-top: 9px;
+	margin-right: 10px;
+}
+
+QComboBox QAbstractItemView{
+	border: 2px solid #8a8a8a;
+	border-radius: 12px;
+	outline: none;
+	color: #cccccc;
+	font: 28px &quot;微软雅黑&quot;;
+	background: #272626;
+	padding: 12px 6px 12px 6px;
+}
+
+QComboBox QAbstractItemView::item{
+	border: none;
+	outline: none;
+	height: 48px;
+	border-radius: 12px;
+	background: #272626;
+}
+QComboBox QAbstractItemView::item:selected{
+	border-radius: 12px;
+	background: #313131;
+}
+QComboBox QAbstractItemView::item:hover{
+	border-radius: 12px;
+	background: #4D4D4D;
+}</string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>自动识别目录：</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>选择目录...</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_8">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QPushButton" name="saveSettings">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	height: 50px;
+	width: 220px;
+	border-radius: 10px;
+	border: 2px solid #4d4d4d;
+	font: 20px &quot;微软雅黑&quot;;
+	color: #99BDC3;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+QPushButton:hover{
+	background: #4d4d4d;
+}
+
+QPushButton:pressed{
+	background: #3d3d3d
+}</string>
+                </property>
+                <property name="text">
+                 <string>保存</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </widget>
           </item>
