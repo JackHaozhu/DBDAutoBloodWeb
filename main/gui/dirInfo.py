@@ -137,3 +137,65 @@ easter_egg = {
     '我真的真的真的要生气了哦(╬▔皿▔)╯': '不陪你玩了(。>︿<)_θ',
     '不陪你玩了(。>︿<)_θ': '不陪你玩了(。>︿<)_θ'
 }
+
+offerings_rarity = {
+    'killers': {
+        ''
+    }
+}
+
+offerings = {
+    'killers': {
+        'momentoMoriEbony',
+        'ward'
+    },
+    'human': {
+
+    },
+    'common': {
+
+    }
+}
+
+addons = {
+    'killers': {
+        'TheTrapper': {},
+        'TheWraith': {},
+        'TheHillbilly': {},
+        'TheNurse': {},
+        'TheShape': {},
+        'TheHag': {},
+        'TheDoctor': {},
+        'TheHuntress': {},
+        'TheCannibal': {},
+        'TheNightmare': {},
+        'ThePig': {},
+        'TheClown': {},
+        'TheSpirit': {},
+        'TheLegion': {},
+        'ThePlague': {},
+        'TheGhostface': {},
+        'TheDemogorgon': {},
+        'TheOni': {},
+        'TheDeathslinger': {},
+        'TheExecutioner': {},
+        'TheBlight': {},
+        'TheTwins': {},
+        'TheTrickster': {},
+        'TheNemesis': {},
+        'TheCenobite': {},
+        'TheArtist': {},
+        'TheOnryo': {},
+        'TheDredge': {},
+        'TheMasterMind': {},
+        'TheKnight': {},
+        'TheSkullMerchant': {},
+        'TheSingularity': {},
+        'TheXenomorph': {},
+        'TheYerkes': {},
+        'TheUnknown': {}
+    },
+    'human':{
+
+    }
+}

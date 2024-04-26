@@ -938,6 +938,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                      </item>
                      <item>
                       <widget class="QWidget" name="killerListArea" native="true">
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
                        <layout class="QVBoxLayout" name="verticalLayout_5">
                         <property name="leftMargin">
                          <number>9</number>
@@ -975,12 +978,93 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                               </sizepolicy>
                              </property>
                              <layout class="QVBoxLayout" name="verticalLayout_7">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
                               <property name="topMargin">
                                <number>0</number>
                               </property>
                               <property name="bottomMargin">
                                <number>0</number>
                               </property>
+                              <item>
+                               <widget class="QComboBox" name="killerTargetType">
+                                <property name="autoFillBackground">
+                                 <bool>false</bool>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QComboBox{
+	height: 36px;
+	color: #cccccc;
+	font: 21px &quot;微软雅黑&quot;;
+	border: 2px solid #4d4d4d;
+	border-bottom: 1px solid #4d4d4d;
+	border-top-left-radius: 10px;  /* 左上角 */
+	border-top-right-radius: 10px;  /* 右上角 */
+	border-bottom-right-radius: 0px;  /* 右下角 */
+	border-bottom-left-radius: 0px;  /* 左下角 */
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-left: 6px;
+}
+QComboBox:hover{
+	border: 2px solid #8a8a8a;
+}
+
+QComboBox::drop-down{
+	border-image: url(:/icon/icon_resources/下拉箭头.svg);
+	width: 22px;
+	height: 22px;
+	margin-top: 9px;
+	margin-right: 10px;
+}
+
+QComboBox QAbstractItemView{
+	border: 2px solid #8a8a8a;
+	border-radius: 12px;
+	outline: none;
+	color: #cccccc;
+	font: 28px &quot;微软雅黑&quot;;
+	background: #272626;
+	padding: 12px 6px 12px 6px;
+}
+
+QComboBox QAbstractItemView::item{
+	border: none;
+	outline: none;
+	height: 48px;
+	border-radius: 12px;
+	background: #272626;
+}
+QComboBox QAbstractItemView::item:selected{
+	border-radius: 12px;
+	background: #313131;
+}
+QComboBox QAbstractItemView::item:hover{
+	border-radius: 12px;
+	background: #4D4D4D;
+}</string>
+                                </property>
+                                <property name="frame">
+                                 <bool>true</bool>
+                                </property>
+                                <item>
+                                 <property name="text">
+                                  <string>所有</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>祭品</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>配件</string>
+                                 </property>
+                                </item>
+                               </widget>
+                              </item>
                               <item>
                                <widget class="QLineEdit" name="searchKillerItem">
                                 <property name="sizePolicy">
@@ -991,14 +1075,15 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                                 </property>
                                 <property name="styleSheet">
                                  <string notr="true">QLineEdit {
-	height: 48px;
-	margin-bottom: 10px;
+	height: 36px;
+	margin-bottom: 0px;
 	border: 2px solid #4d4d4d;
-	border-radius: 10px;
+	border-top: 1px solid #4d4d4d;
+	border-bottom: 1px solid #4d4d4d;
 	color: #99bdc3;
-	font: 28px &quot;微软雅黑&quot;;
-	padding-left: 10px;
-	padding-right: 10px;
+	font: 21px &quot;微软雅黑&quot;;
+	padding-left: 6px;
+	padding-right: 6px;
 }
 
 QLineEdit:hover {
@@ -1010,6 +1095,9 @@ QLineEdit:hover {
                                 </property>
                                 <property name="text">
                                  <string/>
+                                </property>
+                                <property name="placeholderText">
+                                 <string>搜索...</string>
                                 </property>
                                </widget>
                               </item>
@@ -1024,7 +1112,12 @@ QLineEdit:hover {
                                 <property name="styleSheet">
                                  <string notr="true">QListWidget{
 	border: 2px solid #4d4d4d;
-	border-radius: 10px;
+	border-top: 1px solid #4d4d4d;
+	border-top-left-radius: 0px;  /* 左上角 */
+	border-top-right-radius: 0px;  /* 右上角 */
+	border-bottom-right-radius: 10px;  /* 右下角 */
+	border-bottom-left-radius: 10px;  /* 左下角 */
+	margin-top: 0px;
 }
 
 QScrollBar:vertical {
@@ -1053,6 +1146,33 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: none;
 }</string>
                                 </property>
+                                <property name="dragEnabled">
+                                 <bool>true</bool>
+                                </property>
+                                <property name="dragDropMode">
+                                 <enum>QAbstractItemView::DragDrop</enum>
+                                </property>
+                                <property name="defaultDropAction">
+                                 <enum>Qt::MoveAction</enum>
+                                </property>
+                                <property name="sortingEnabled">
+                                 <bool>false</bool>
+                                </property>
+                                <item>
+                                 <property name="text">
+                                  <string>1</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>2</string>
+                                 </property>
+                                </item>
+                                <item>
+                                 <property name="text">
+                                  <string>3</string>
+                                 </property>
+                                </item>
                                </widget>
                               </item>
                              </layout>
@@ -1097,6 +1217,15 @@ QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 	background: none;
 }</string>
+                             </property>
+                             <property name="dragEnabled">
+                              <bool>true</bool>
+                             </property>
+                             <property name="dragDropMode">
+                              <enum>QAbstractItemView::DragDrop</enum>
+                             </property>
+                             <property name="defaultDropAction">
+                              <enum>Qt::MoveAction</enum>
                              </property>
                             </widget>
                            </item>
@@ -1545,8 +1674,8 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>241</width>
-                   <height>152</height>
+                   <width>1283</width>
+                   <height>642</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1616,6 +1745,9 @@ QComboBox QAbstractItemView::item:hover{
 	border-radius: 12px;
 	background: #4D4D4D;
 }</string>
+                    </property>
+                    <property name="frame">
+                     <bool>true</bool>
                     </property>
                     <item>
                      <property name="text">
