@@ -3,7 +3,7 @@ import json
 from . import dirInfo
 
 from PyQt5.QtCore import Qt, pyqtSlot
-from PyQt5.QtWidgets import QMainWindow, QRadioButton, QListView, QFileDialog, QApplication
+from PyQt5.QtWidgets import QMainWindow, QRadioButton, QListView, QFileDialog, QApplication, QListWidgetItem
 from .DAB import Ui_MainWindow  # 导入通过pyuic5转换生成的UI文件中的类
 
 if dirInfo.get_program_install_location('黎明杀机') is not None:
@@ -106,10 +106,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def killerToggled(self, checked):
         toggledButton = self.sender()
         if checked:
+            # todo 读写config.json
             print(f'{toggledButton.objectName()} is checked!\nLoading {toggledButton.objectName()}\'s offerings and add-ons')
-            for offering_key in dirInfo.offerings['killers']:
-                pass
-
+            common_offering_list = list(dirInfo.offerings['killers'].keys())
+            print(common_offering_list)
+            self.killerChooseList.clear()
+            for offering_name in common_offering_list:
+                print(f'adding {offering_name}')
+                print(dirInfo.offerings['killers'][offering_name]['name'])
+                item = QListWidgetItem(offering_name)
+                self.killerChooseList.addItem(item)
+                item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
 
