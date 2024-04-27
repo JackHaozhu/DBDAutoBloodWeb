@@ -102,11 +102,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if button:
                 button.setStyleSheet(f'QRadioButton {{ border-image: url({target_img_dir}); }}')
 
-    # 切换杀手
+    # 切换杀手，加载其配件与祭品，读取config
     def killerToggled(self, checked):
         toggledButton = self.sender()
         if checked:
-            print(f'{toggledButton.objectName()} is checked!')
+            print(f'{toggledButton.objectName()} is checked!\nLoading {toggledButton.objectName()}\'s offerings and add-ons')
+            for offering_key in dirInfo.offerings['killers']:
+
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
 

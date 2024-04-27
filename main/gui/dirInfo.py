@@ -146,10 +146,110 @@ offerings_rarity = {
 
 offerings = {
     'killers': {
-        'momentoMoriEbony',
-        'ward'
+        'momentoMoriEbony': {
+            'name': {
+                '黑檀死亡坠链',
+                'Ebony Momento Mori'
+            },
+            'description': {
+                '赐予你在下一次游戏中亲手处决所有进入第二层上钩状态的逃生者的能力。',
+                'Grants the ability to kill all Survivors in the Dying State, who have progressed two Hook Stages.'
+            }
+        },
+        'wardBlack': {
+            'name': {
+                '黑护符',
+                'Black Ward'
+            },
+            'description': {
+                '燃烧这件祭品，可以在游戏中保护你免遭附加品的损失。',
+                'Grants protection against the loss of your Add-ons at the end of the Trial.'
+            }
+        },
+        'cutCoin': {
+            'name': {
+                '切分的硬币',
+                'Cut Coin'
+            },
+            'description': {
+                '召唤恶灵，避免出现两个箱子。',
+                'Calls upon The Entity to reduce the number of Chests by -2 Chests.'
+            }
+        },
+        'murkyReagent': {
+            'name': {
+                '超强厚雾试剂',
+                'Murky Reagent'
+            },
+            'description': {
+                '大幅增强黑雾。',
+                'Increases the Thickness of the Dark Mist by +75 %.'
+            }
+        },
+        'putridOak': {
+            'name': {
+                '朽坏的橡木',
+                'Putrid Oak'
+            },
+            'description': {
+                '召唤恶灵大幅缩小献祭钩之间的间距。',
+                'Calls upon The Entity to decrease the minimum Spawn distance between Hooks by -3.5 metres.'
+            }
+        }
+
+
     },
-    'human': {
+    'survivors': {
+        'petrifiedOak': {
+            'name': {
+                '石化橡木',
+                'Petrified Oak'
+            },
+            'description': {
+                '平息恶灵的怒火，小幅增加钩子之间出现的距离。',
+                'Calms The Entity to increase the minimum Spawn distance between Hooks by +1 metre.'
+            }
+        },
+        'shinyCoin': {
+            'name': {
+                '闪亮的硬币',
+                'Shiny Coin'
+            },
+            'description': {
+                '召唤恶灵，多制造2个箱子。',
+                'Calms The Entity to increase the number of Chests by +2 Chests.'
+            }
+        },
+        'shroudOfBinding': {
+            'name': {
+                '捆绑裹尸布',
+                'Shroud of Binding'
+            },
+            'description': {
+                '所有的逃生者进入游戏时位置集中。',
+                'Calms the Entity to spawn all Survivors together.'
+            }
+        },
+        'jarOfSaltyLips': {
+            'name': {
+                '威戈的盐渍唇罐',
+                'Vigo\'s Jar of Salty Lips'
+            },
+            'description': {
+                '大幅增加所有逃生者的运气。',
+                'Increases the Odds of every Survivor succeeding a Self-Unhook attempt by +3 %.'
+            }
+        },
+        'wardWhite': {
+            'name': {
+                '白护符',
+                'White Ward'
+            },
+            'description': {
+                '燃烧这件祭品，可以让你在死亡后免遭道具和附加品的损失。',
+                'Grants protection against the loss of your Item and its Add-ons.'
+            }
+        }
 
     },
     'common': {

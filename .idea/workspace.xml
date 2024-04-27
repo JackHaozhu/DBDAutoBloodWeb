@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="添加不同稀有度祭品与物品背景">
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="更新gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/dirInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +84,7 @@
       <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\GUI" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="crawler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DBDAutoBloodWeb" />
       <option name="ENV_FILES" value="" />
@@ -273,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714149664761</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="更新gui">
+      <option name="closed" value="true" />
+      <created>1714188198722</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714188198722</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -296,7 +301,8 @@
     <MESSAGE value="添加选择游戏目录功能" />
     <MESSAGE value="优化数据结构" />
     <MESSAGE value="添加不同稀有度祭品与物品背景" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加不同稀有度祭品与物品背景" />
+    <MESSAGE value="更新gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新gui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
