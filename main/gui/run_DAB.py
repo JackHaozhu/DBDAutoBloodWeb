@@ -32,10 +32,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for killerRadioButton in self.killerList.findChildren(QRadioButton):
             killerRadioButton.toggled.connect(self.killerToggled)
         # 拖动杀手Item事件
-        self.killerChooseList.itemChanged.connect(self.killerItemMoved)
-        self.killerTargetList.itemChanged.connect(self.killerItemMoved)
+        # self.killerChooseList.itemChanged.connect(self.killerItemMoved)
+        # self.killerTargetList.itemChanged.connect(self.killerItemMoved)
         self.killerChooseList.itemPressed.connect(self.killerItemMoved)
-        self.killerChooseList.dropEvent()
         # 初始化页面至 主页-杀手
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
@@ -135,7 +134,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for i in range(self.killerChooseList.count()):
             item_name = self.killerChooseList.item(i).text()
             print(item_name)
-
 
     # 切换杀手，加载其配件与祭品，读取config
     def killerToggled(self, checked):
