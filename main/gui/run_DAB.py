@@ -108,6 +108,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if checked:
             print(f'{toggledButton.objectName()} is checked!\nLoading {toggledButton.objectName()}\'s offerings and add-ons')
             for offering_key in dirInfo.offerings['killers']:
+                pass
 
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
