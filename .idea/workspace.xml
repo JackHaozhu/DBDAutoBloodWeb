@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="优化数据结构">
-      <change afterPath="$PROJECT_DIR$/main/gui/icon_resources/backgrounds/offerings/CommonOffering.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/gui/icon_resources/backgrounds/offerings/EventOfferings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/gui/icon_resources/backgrounds/offerings/RareOffering.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/gui/icon_resources/backgrounds/offerings/UltraRareOffering.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/gui/icon_resources/backgrounds/offerings/UncommonOffering.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/gui/icon_resources/backgrounds/offerings/VeryRareOffering.png" afterDir="false" />
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="添加不同稀有度祭品与物品背景">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/dicGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/dicGen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/filedir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dev/filedir.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/dirInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/PyCharm/Projects/DBDAutoBloodWeb/.venv/Scripts/pyrcc5.exe",
+    "last_opened_file_path": "E:/PyCharm/Projects/DBDAutoBloodWeb/main/gui/icon_resources/backgrounds/items",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
@@ -85,6 +78,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\main\gui\icon_resources\backgrounds\items" />
       <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\GUI" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -93,7 +87,7 @@
       <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\GUI" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.crawler">
+  <component name="RunManager">
     <configuration name="crawler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DBDAutoBloodWeb" />
       <option name="ENV_FILES" value="" />
@@ -184,8 +178,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.crawler" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.crawler" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.dicGen" />
       </list>
@@ -271,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714131146009</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="添加不同稀有度祭品与物品背景">
+      <option name="closed" value="true" />
+      <created>1714149664761</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714149664761</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -293,7 +295,8 @@
     <MESSAGE value="添加统计页彩蛋" />
     <MESSAGE value="添加选择游戏目录功能" />
     <MESSAGE value="优化数据结构" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化数据结构" />
+    <MESSAGE value="添加不同稀有度祭品与物品背景" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加不同稀有度祭品与物品背景" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -310,7 +313,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main/gui/run_DAB.py</url>
-          <line>51</line>
+          <line>52</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

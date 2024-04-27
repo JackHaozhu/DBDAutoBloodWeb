@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 
-
+QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -317,6 +317,9 @@ class Ui_MainWindow(object):
 "    width: 0px;\n"
 "    height: 0px;\n"
 "}\n"
+"QRadioButton:pressed {\n"
+"    background-color: #3d3d3d;\n"
+"}\n"
 "QRadioButton:hover{\n"
 "    background-color: #4d4d4d;\n"
 "}\n"
@@ -354,10 +357,11 @@ class Ui_MainWindow(object):
 "}")
         self.killerList.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.killerList.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.killerList.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.killerList.setWidgetResizable(True)
         self.killerList.setObjectName("killerList")
         self.killerListContent = QtWidgets.QWidget()
-        self.killerListContent.setGeometry(QtCore.QRect(0, 0, 626, 1389))
+        self.killerListContent.setGeometry(QtCore.QRect(0, 0, 666, 1389))
         self.killerListContent.setStyleSheet("QWidget#scrollAreaWidgetContents{\n"
 "    \n"
 "}")
@@ -560,6 +564,7 @@ class Ui_MainWindow(object):
         self.TheHuntress.setObjectName("TheHuntress")
         self.gridLayout.addWidget(self.TheHuntress, 1, 3, 1, 1)
         self.TheDredge = QtWidgets.QRadioButton(self.killerListContent)
+        self.TheDredge.setStyleSheet("")
         self.TheDredge.setText("")
         self.TheDredge.setObjectName("TheDredge")
         self.gridLayout.addWidget(self.TheDredge, 7, 3, 1, 1)
@@ -588,6 +593,7 @@ class Ui_MainWindow(object):
         self.killerList.setWidget(self.killerListContent)
         self.horizontalLayout_4.addWidget(self.killerList)
         self.killerListArea = QtWidgets.QWidget(self.widget)
+        self.killerListArea.setStyleSheet("")
         self.killerListArea.setObjectName("killerListArea")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.killerListArea)
         self.verticalLayout_5.setContentsMargins(9, 0, 0, 0)
@@ -603,15 +609,84 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setContentsMargins(-1, 0, 0, -1)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.chooseSearchFrame = QtWidgets.QWidget(self.mainChooseFrame)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.chooseSearchFrame.sizePolicy().hasHeightForWidth())
         self.chooseSearchFrame.setSizePolicy(sizePolicy)
+        self.chooseSearchFrame.setMinimumSize(QtCore.QSize(274, 0))
+        self.chooseSearchFrame.setMaximumSize(QtCore.QSize(274, 16777215))
+        self.chooseSearchFrame.setStyleSheet("QWidget#chooseSearchFrame {\n"
+"    width: 277;\n"
+"}")
         self.chooseSearchFrame.setObjectName("chooseSearchFrame")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.chooseSearchFrame)
         self.verticalLayout_7.setContentsMargins(-1, 0, -1, 0)
+        self.verticalLayout_7.setSpacing(0)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.killerTargetType = QtWidgets.QComboBox(self.chooseSearchFrame)
+        self.killerTargetType.setAutoFillBackground(False)
+        self.killerTargetType.setStyleSheet("QComboBox{\n"
+"    height: 36px;\n"
+"    color: #99bdc3;\n"
+"    font: 21px \"微软雅黑\";\n"
+"    border: 2px solid #4d4d4d;\n"
+"    border-bottom: 1px solid #4d4d4d;\n"
+"    border-top-left-radius: 10px;  /* 左上角 */\n"
+"    border-top-right-radius: 10px;  /* 右上角 */\n"
+"    border-bottom-right-radius: 0px;  /* 右下角 */\n"
+"    border-bottom-left-radius: 0px;  /* 左下角 */\n"
+"    margin-top: 0px;\n"
+"    margin-bottom: 0px;\n"
+"    padding-left: 6px;\n"
+"}\n"
+"QComboBox:hover{\n"
+"    border: 2px solid #8a8a8a;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down{\n"
+"    border-image: url(:/icon/icon_resources/下拉箭头.svg);\n"
+"    width: 22px;\n"
+"    height: 22px;\n"
+"    margin-top: 9px;\n"
+"    margin-right: 10px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView{\n"
+"    border: 2px solid #8a8a8a;\n"
+"    border-top: 1px solid #8a8a8a;\n"
+"    border-top-left-radius: 0px;  /* 左上角 */\n"
+"    border-top-right-radius: 0px;  /* 右上角 */\n"
+"    border-bottom-right-radius: 10px;  /* 右下角 */\n"
+"    border-bottom-left-radius: 10px;  /* 左下角 */\n"
+"    outline: none;\n"
+"    color: #cccccc;\n"
+"    font: 21px \"微软雅黑\";\n"
+"    background: #272626;\n"
+"    padding: 12px 6px 12px 6px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item{\n"
+"    border: none;\n"
+"    outline: none;\n"
+"    height: 36px;\n"
+"    border-radius: 10px;\n"
+"    background: #272626;\n"
+"}\n"
+"QComboBox QAbstractItemView::item:selected{\n"
+"    border-radius: 10px;\n"
+"    background: #313131;\n"
+"}\n"
+"QComboBox QAbstractItemView::item:hover{\n"
+"    border-radius: 10px;\n"
+"    background: #4D4D4D;\n"
+"}")
+        self.killerTargetType.setFrame(True)
+        self.killerTargetType.setObjectName("killerTargetType")
+        self.killerTargetType.addItem("")
+        self.killerTargetType.addItem("")
+        self.killerTargetType.addItem("")
+        self.verticalLayout_7.addWidget(self.killerTargetType)
         self.searchKillerItem = QtWidgets.QLineEdit(self.chooseSearchFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -619,14 +694,15 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.searchKillerItem.sizePolicy().hasHeightForWidth())
         self.searchKillerItem.setSizePolicy(sizePolicy)
         self.searchKillerItem.setStyleSheet("QLineEdit {\n"
-"    height: 48px;\n"
-"    margin-bottom: 10px;\n"
+"    height: 36px;\n"
+"    margin-bottom: 0px;\n"
 "    border: 2px solid #4d4d4d;\n"
-"    border-radius: 10px;\n"
+"    border-top: 1px solid #4d4d4d;\n"
+"    border-bottom: 1px solid #4d4d4d;\n"
 "    color: #99bdc3;\n"
-"    font: 28px \"微软雅黑\";\n"
-"    padding-left: 10px;\n"
-"    padding-right: 10px;\n"
+"    font: 21px \"微软雅黑\";\n"
+"    padding-left: 6px;\n"
+"    padding-right: 6px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover {\n"
@@ -636,16 +712,48 @@ class Ui_MainWindow(object):
         self.searchKillerItem.setText("")
         self.searchKillerItem.setObjectName("searchKillerItem")
         self.verticalLayout_7.addWidget(self.searchKillerItem)
-        self.chooseList = QtWidgets.QListWidget(self.chooseSearchFrame)
+        self.killerChooseList = QtWidgets.QListWidget(self.chooseSearchFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.chooseList.sizePolicy().hasHeightForWidth())
-        self.chooseList.setSizePolicy(sizePolicy)
-        self.chooseList.setStyleSheet("QListWidget{\n"
+        sizePolicy.setHeightForWidth(self.killerChooseList.sizePolicy().hasHeightForWidth())
+        self.killerChooseList.setSizePolicy(sizePolicy)
+        self.killerChooseList.setStyleSheet("QListWidget{\n"
 "    border: 2px solid #4d4d4d;\n"
-"    border-radius: 10px;\n"
+"    border-top: 1px solid #4d4d4d;\n"
+"    border-top-left-radius: 0px;  /* 左上角 */\n"
+"    border-top-right-radius: 0px;  /* 右上角 */\n"
+"    border-bottom-right-radius: 10px;  /* 右下角 */\n"
+"    border-bottom-left-radius: 10px;  /* 左下角 */\n"
+"    margin-top: 0px;\n"
+"    padding: 10px 5px 10px 5px;\n"
 "}\n"
+"\n"
+"\n"
+"QListWidget:focus {\n"
+"    outline: none;\n"
+"}\n"
+"QListWidget::dropIndicator {\n"
+"    color: #3d3d3d;\n"
+"}\n"
+"QListWidget::item{\n"
+"    color: #99bdc3;\n"
+"    height: 40px;\n"
+"    margin-bottom: 5px;\n"
+"    margin-top: 5px;\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #4d4d4d;\n"
+"    opacity: 0.5;\n"
+"}\n"
+"QListWidget::item:hover {\n"
+"    background: #4d4d4d;\n"
+"}\n"
+"\n"
+"/*QListWidget::item:selected {\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #808080;\n"
+"    background: #313131;\n"
+"}*/\n"
 "\n"
 "QScrollBar:vertical {\n"
 "    width: 7px;\n"
@@ -672,18 +780,84 @@ class Ui_MainWindow(object):
 "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "    background: none;\n"
 "}")
-        self.chooseList.setObjectName("chooseList")
-        self.verticalLayout_7.addWidget(self.chooseList)
+        self.killerChooseList.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.killerChooseList.setDragEnabled(True)
+        self.killerChooseList.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
+        self.killerChooseList.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.killerChooseList.setObjectName("killerChooseList")
+        self.verticalLayout_7.addWidget(self.killerChooseList)
         self.horizontalLayout_7.addWidget(self.chooseSearchFrame)
-        self.listWidget = QtWidgets.QListWidget(self.mainChooseFrame)
+        self.targetFrame = QtWidgets.QWidget(self.mainChooseFrame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.targetFrame.sizePolicy().hasHeightForWidth())
+        self.targetFrame.setSizePolicy(sizePolicy)
+        self.targetFrame.setMinimumSize(QtCore.QSize(274, 0))
+        self.targetFrame.setMaximumSize(QtCore.QSize(274, 16777215))
+        self.targetFrame.setStyleSheet("QWidget#targetFrame {\n"
+"    width: 277;\n"
+"}")
+        self.targetFrame.setObjectName("targetFrame")
+        self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.targetFrame)
+        self.verticalLayout_6.setContentsMargins(9, 0, 9, 0)
+        self.verticalLayout_6.setSpacing(0)
+        self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.chooseTargetHint = QtWidgets.QLabel(self.targetFrame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.chooseTargetHint.sizePolicy().hasHeightForWidth())
+        self.chooseTargetHint.setSizePolicy(sizePolicy)
+        self.chooseTargetHint.setMinimumSize(QtCore.QSize(0, 38))
+        self.chooseTargetHint.setStyleSheet("font: 9pt \"微软雅黑\";\n"
+"color: #99bdc3;\n"
+"height: 50px;\n"
+"\n"
+"border-top-left-radius: 10px;  /* 左上角 */\n"
+"border-top-right-radius: 10px;  /* 右上角 */\n"
+"border-bottom-right-radius: 0px;  /* 右下角 */\n"
+"border-bottom-left-radius: 0px;  /* 左下角 */\n"
+"border: 2px solid #4d4d4d;\n"
+"border-bottom: 1px solid #4d4d4d;")
+        self.chooseTargetHint.setObjectName("chooseTargetHint")
+        self.verticalLayout_6.addWidget(self.chooseTargetHint)
+        self.killerTargetList = QtWidgets.QListWidget(self.targetFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.listWidget.sizePolicy().hasHeightForWidth())
-        self.listWidget.setSizePolicy(sizePolicy)
-        self.listWidget.setStyleSheet("QListWidget{\n"
+        sizePolicy.setHeightForWidth(self.killerTargetList.sizePolicy().hasHeightForWidth())
+        self.killerTargetList.setSizePolicy(sizePolicy)
+        self.killerTargetList.setStyleSheet("QListWidget{\n"
 "    border: 2px solid #4d4d4d;\n"
+"    border-top: 1px solid #4d4d4d;\n"
+"    border-bottom: 1px solid #4d4d4d;\n"
+"    padding: 10px 5px 10px 5px;\n"
+"}\n"
+"\n"
+"QListWidget:focus {\n"
+"    outline: none;\n"
+"}\n"
+"QListWidget::dropIndicator {\n"
+"    color: #3d3d3d;\n"
+"}\n"
+"QListWidget::item{\n"
+"    color: #99bdc3;\n"
+"    height: 40px;\n"
+"    margin-bottom: 5px;\n"
+"    margin-top: 5px;\n"
 "    border-radius: 10px;\n"
+"    border: 1px solid #4d4d4d;\n"
+"    opacity: 0.5;\n"
+"}\n"
+"QListWidget::item:hover {\n"
+"    background: #4d4d4d;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"    border-radius: 10px;\n"
+"    border: 1px solid #808080;\n"
+"    background: #313131;\n"
 "}\n"
 "\n"
 "QScrollBar:vertical {\n"
@@ -711,8 +885,42 @@ class Ui_MainWindow(object):
 "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "    background: none;\n"
 "}")
-        self.listWidget.setObjectName("listWidget")
-        self.horizontalLayout_7.addWidget(self.listWidget)
+        self.killerTargetList.setDragEnabled(True)
+        self.killerTargetList.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
+        self.killerTargetList.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.killerTargetList.setObjectName("killerTargetList")
+        self.verticalLayout_6.addWidget(self.killerTargetList)
+        self.emptyTargetButtom = QtWidgets.QPushButton(self.targetFrame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.emptyTargetButtom.sizePolicy().hasHeightForWidth())
+        self.emptyTargetButtom.setSizePolicy(sizePolicy)
+        self.emptyTargetButtom.setStyleSheet("QPushButton{\n"
+"    height: 36px;\n"
+"\n"
+"    border-top-left-radius: 0px;  /* 左上角 */\n"
+"    border-top-right-radius: 0px;  /* 右上角 */\n"
+"    border-bottom-right-radius: 10px;  /* 右下角 */\n"
+"    border-bottom-left-radius: 10px;  /* 左下角 */\n"
+"    border: 2px solid #4d4d4d;\n"
+"    border-top: 1px solid #4d4d4d;\n"
+"    font: 21px \"微软雅黑\";\n"
+"    color: #99BDC3;\n"
+"    margin-top: 0px;\n"
+"    margin-bottom: 0px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    background: #4d4d4d;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    background: #3d3d3d\n"
+"}")
+        self.emptyTargetButtom.setObjectName("emptyTargetButtom")
+        self.verticalLayout_6.addWidget(self.emptyTargetButtom)
+        self.horizontalLayout_7.addWidget(self.targetFrame)
         self.verticalLayout_5.addWidget(self.mainChooseFrame)
         self.killerStart = QtWidgets.QPushButton(self.killerListArea)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -981,7 +1189,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1283, 642))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 241, 152))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
@@ -1042,6 +1250,7 @@ class Ui_MainWindow(object):
 "    border-radius: 12px;\n"
 "    background: #4D4D4D;\n"
 "}")
+        self.gameDirComboBox.setFrame(True)
         self.gameDirComboBox.setObjectName("gameDirComboBox")
         self.gameDirComboBox.addItem("")
         self.gameDirComboBox.addItem("")
@@ -1102,6 +1311,13 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.titleLabel.setText(_translate("MainWindow", "DAB"))
         self.label.setText(_translate("MainWindow", "概览"))
+        self.killerTargetType.setItemText(0, _translate("MainWindow", "所有"))
+        self.killerTargetType.setItemText(1, _translate("MainWindow", "祭品"))
+        self.killerTargetType.setItemText(2, _translate("MainWindow", "配件"))
+        self.searchKillerItem.setPlaceholderText(_translate("MainWindow", "搜索..."))
+        self.killerChooseList.setSortingEnabled(False)
+        self.chooseTargetHint.setText(_translate("MainWindow", "<html><head/><body><p>从左边拖拽物品以添加，拖回以删除</p></body></html>"))
+        self.emptyTargetButtom.setText(_translate("MainWindow", "清空"))
         self.killerStart.setText(_translate("MainWindow", "Start"))
         self.killerStopHint.setText(_translate("MainWindow", "点击Start以开始"))
         self.chooseType.setTabText(self.chooseType.indexOf(self.killerTab), _translate("MainWindow", "杀手"))

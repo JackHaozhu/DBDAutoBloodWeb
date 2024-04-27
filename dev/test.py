@@ -1,50 +1,43 @@
-from PyQt5.QtWidgets import QApplication, QListWidget, QVBoxLayout, QWidget
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QLabel, QHBoxLayout
+from PyQt5.QtCore import Qt
 
+class MyWidget(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.initUI()
 
-class DragDropListWidget(QListWidget):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.setAcceptDrops(True)
+    def initUI(self):
+        self.setWindowTitle('QListWidget 示例')
+        self.setGeometry(100, 100, 300, 200)
 
-    def dragEnterEvent(self, event):
-        if event.source() == self:
-            event.setDropAction(Qt.CopyAction)
-            event.accept()
+        layout = QVBoxLayout()
+
+        # 创建 QListWidget 和提示标签
+        self.list_widget = QListWidget()
+        self.list_widget.setStyleSheet("QListWidget::item { height: 30px; }")
+        self.list_widget.setFixedWidth(200)
+        self.list_widget.setFixedHeight(100)
+
+        self.label = QLabel('没有项目')
+        self.label.setAlignment(Qt.AlignCenter)
+
+        layout.addWidget(self.list_widget)
+        layout.addWidget(self.label)
+
+        self.setLayout(layout)
+
+        # 检测列表是否为空，显示或隐藏提示信息
+        self.list_widget.itemChanged.connect(self.checkEmptyList)
+
+    def checkEmptyList(self):
+        if self.list_widget.count() == 0:
+            self.label.setVisible(True)
         else:
-            super().dragEnterEvent(event)
+            self.label.setVisible(False)
 
-    def dropEvent(self, event):
-        if event.source() == self:
-            event.setDropAction(Qt.CopyAction)
-            event.accept()
-        else:
-            super().dropEvent(event)
-
-
-app = QApplication([])
-
-# 创建一个 QWidget 作为窗口
-window = QWidget()
-
-# 创建 targetList 和 sortList
-target_list = DragDropListWidget()
-sort_list = DragDropListWidget()
-
-# 向 targetList 添加一些项目
-target_items = ["Item 1", "Item 2", "Item 3"]
-target_list.addItems(target_items)
-
-# 创建一个垂直布局管理器
-layout = QVBoxLayout()
-
-# 将 targetList 和 sortList 添加到布局中
-layout.addWidget(target_list)
-layout.addWidget(sort_list)
-
-# 设置窗口的布局
-window.setLayout(layout)
-
-# 显示窗口
-window.show()
-
-app.exec_()
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    my_widget = MyWidget()
+    my_widget.show()
+    sys.exit(app.exec_())

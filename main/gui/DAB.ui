@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1440</width>
+    <width>1442</width>
     <height>900</height>
    </rect>
   </property>
@@ -528,6 +528,9 @@ QRadioButton::indicator{
 	width: 0px;
 	height: 0px;
 }
+QRadioButton:pressed {
+	background-color: #3d3d3d;
+}
 QRadioButton:hover{
 	background-color: #4d4d4d;
 }
@@ -569,6 +572,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                        </property>
                        <property name="frameShadow">
                         <enum>QFrame::Sunken</enum>
+                       </property>
+                       <property name="horizontalScrollBarPolicy">
+                        <enum>Qt::ScrollBarAlwaysOff</enum>
                        </property>
                        <property name="widgetResizable">
                         <bool>true</bool>
@@ -894,6 +900,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                          </item>
                          <item row="7" column="3">
                           <widget class="QRadioButton" name="TheDredge">
+                           <property name="styleSheet">
+                            <string notr="true"/>
+                           </property>
                            <property name="text">
                             <string/>
                            </property>
@@ -972,10 +981,27 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                            <item>
                             <widget class="QWidget" name="chooseSearchFrame" native="true">
                              <property name="sizePolicy">
-                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                                <horstretch>0</horstretch>
                                <verstretch>0</verstretch>
                               </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>274</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>274</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QWidget#chooseSearchFrame {
+	width: 277;
+}</string>
                              </property>
                              <layout class="QVBoxLayout" name="verticalLayout_7">
                               <property name="spacing">
@@ -995,7 +1021,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                                 <property name="styleSheet">
                                  <string notr="true">QComboBox{
 	height: 36px;
-	color: #cccccc;
+	color: #99bdc3;
 	font: 21px &quot;微软雅黑&quot;;
 	border: 2px solid #4d4d4d;
 	border-bottom: 1px solid #4d4d4d;
@@ -1021,7 +1047,11 @@ QComboBox::drop-down{
 
 QComboBox QAbstractItemView{
 	border: 2px solid #8a8a8a;
-	border-radius: 12px;
+	border-top: 1px solid #8a8a8a;
+	border-top-left-radius: 0px;  /* 左上角 */
+	border-top-right-radius: 0px;  /* 右上角 */
+	border-bottom-right-radius: 10px;  /* 右下角 */
+	border-bottom-left-radius: 10px;  /* 左下角 */
 	outline: none;
 	color: #cccccc;
 	font: 28px &quot;微软雅黑&quot;;
@@ -1102,7 +1132,7 @@ QLineEdit:hover {
                                </widget>
                               </item>
                               <item>
-                               <widget class="QListWidget" name="chooseList">
+                               <widget class="QListWidget" name="killerChooseList">
                                 <property name="sizePolicy">
                                  <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                                   <horstretch>0</horstretch>
@@ -1118,6 +1148,192 @@ QLineEdit:hover {
 	border-bottom-right-radius: 10px;  /* 右下角 */
 	border-bottom-left-radius: 10px;  /* 左下角 */
 	margin-top: 0px;
+	padding: 10px 5px 10px 5px;
+}
+
+
+QListWidget:focus {
+	outline: none;
+}
+QListWidget::dropIndicator {
+	color: #3d3d3d;
+}
+QListWidget::item{
+	color: #99bdc3;
+	height: 40px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border-radius: 10px;
+	border: 1px solid #4d4d4d;
+	opacity: 0.5;
+}
+QListWidget::item:hover {
+	background: #4d4d4d;
+}
+
+/*QListWidget::item:selected {
+	border-radius: 10px;
+	border: 1px solid #808080;
+	background: #313131;
+}*/
+
+QScrollBar:vertical {
+    width: 7px;
+    background: #272626;
+	margin: 10px 2px 10px 1px;
+    border-radius: 2px;
+}
+
+QScrollBar::handle:vertical {
+    background: gray;
+    border-radius: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: darkgray;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+	background: none;
+	height: 0px;
+	width: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+	background: none;
+}</string>
+                                </property>
+                                <property name="horizontalScrollBarPolicy">
+                                 <enum>Qt::ScrollBarAlwaysOff</enum>
+                                </property>
+                                <property name="dragEnabled">
+                                 <bool>true</bool>
+                                </property>
+                                <property name="dragDropMode">
+                                 <enum>QAbstractItemView::DragDrop</enum>
+                                </property>
+                                <property name="defaultDropAction">
+                                 <enum>Qt::MoveAction</enum>
+                                </property>
+                                <property name="sortingEnabled">
+                                 <bool>false</bool>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QWidget" name="targetFrame" native="true">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>274</width>
+                               <height>0</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>274</width>
+                               <height>16777215</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QWidget#targetFrame {
+	width: 277;
+}</string>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_6">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>9</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QLabel" name="chooseTargetHint">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>38</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">font: 9pt &quot;微软雅黑&quot;;
+color: #99bdc3;
+height: 50px;
+
+border-top-left-radius: 10px;  /* 左上角 */
+border-top-right-radius: 10px;  /* 右上角 */
+border-bottom-right-radius: 0px;  /* 右下角 */
+border-bottom-left-radius: 0px;  /* 左下角 */
+border: 2px solid #4d4d4d;
+border-bottom: 1px solid #4d4d4d;</string>
+                                </property>
+                                <property name="text">
+                                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;从左边拖拽物品以添加，拖回以删除&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QListWidget" name="killerTargetList">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">QListWidget{
+	border: 2px solid #4d4d4d;
+	border-top: 1px solid #4d4d4d;
+	border-bottom: 1px solid #4d4d4d;
+	padding: 10px 5px 10px 5px;
+}
+
+QListWidget:focus {
+	outline: none;
+}
+QListWidget::dropIndicator {
+	color: #3d3d3d;
+}
+QListWidget::item{
+	color: #99bdc3;
+	height: 40px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border-radius: 10px;
+	border: 1px solid #4d4d4d;
+	opacity: 0.5;
+}
+QListWidget::item:hover {
+	background: #4d4d4d;
+}
+
+QListWidget::item:selected {
+	border-radius: 10px;
+	border: 1px solid #808080;
+	background: #313131;
 }
 
 QScrollBar:vertical {
@@ -1155,78 +1371,46 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                                 <property name="defaultDropAction">
                                  <enum>Qt::MoveAction</enum>
                                 </property>
-                                <property name="sortingEnabled">
-                                 <bool>false</bool>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="emptyTargetButtom">
+                                <property name="sizePolicy">
+                                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                  <horstretch>0</horstretch>
+                                  <verstretch>0</verstretch>
+                                 </sizepolicy>
                                 </property>
-                                <item>
-                                 <property name="text">
-                                  <string>1</string>
-                                 </property>
-                                </item>
-                                <item>
-                                 <property name="text">
-                                  <string>2</string>
-                                 </property>
-                                </item>
-                                <item>
-                                 <property name="text">
-                                  <string>3</string>
-                                 </property>
-                                </item>
+                                <property name="styleSheet">
+                                 <string notr="true">QPushButton{
+	height: 36px;
+
+	border-top-left-radius: 0px;  /* 左上角 */
+	border-top-right-radius: 0px;  /* 右上角 */
+	border-bottom-right-radius: 10px;  /* 右下角 */
+	border-bottom-left-radius: 10px;  /* 左下角 */
+	border: 2px solid #4d4d4d;
+	border-top: 1px solid #4d4d4d;
+	font: 21px &quot;微软雅黑&quot;;
+	color: #99BDC3;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+QPushButton:hover{
+	background: #4d4d4d;
+}
+
+QPushButton:pressed{
+	background: #3d3d3d
+}</string>
+                                </property>
+                                <property name="text">
+                                 <string>清空</string>
+                                </property>
                                </widget>
                               </item>
                              </layout>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QListWidget" name="listWidget">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true">QListWidget{
-	border: 2px solid #4d4d4d;
-	border-radius: 10px;
-}
-
-QScrollBar:vertical {
-    width: 7px;
-    background: #272626;
-	margin: 10px 2px 10px 1px;
-    border-radius: 2px;
-}
-
-QScrollBar::handle:vertical {
-    background: gray;
-    border-radius: 2px;
-}
-
-QScrollBar::handle:vertical:hover {
-    background: darkgray;
-}
-
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
-	background: none;
-	height: 0px;
-	width: 0px;
-}
-
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-	background: none;
-}</string>
-                             </property>
-                             <property name="dragEnabled">
-                              <bool>true</bool>
-                             </property>
-                             <property name="dragDropMode">
-                              <enum>QAbstractItemView::DragDrop</enum>
-                             </property>
-                             <property name="defaultDropAction">
-                              <enum>Qt::MoveAction</enum>
-                             </property>
                             </widget>
                            </item>
                           </layout>
@@ -1674,8 +1858,8 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>1283</width>
-                   <height>642</height>
+                   <width>241</width>
+                   <height>152</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_12">

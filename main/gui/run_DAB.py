@@ -37,6 +37,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.loadKillerImgs(dirInfo.killer_key)
         # 初始化QComboBox样式
         self.gameDirComboBox.setView(QListView())
+        self.killerTargetType.setView(QListView())
         # 初始化下拉菜单中自动选择目录
         self.initChooseDir()
         # self.gameDirComboBox.setItemText(0, '自动选择目录：' + game_dir)
@@ -109,7 +110,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
 
-
     # 初始化选择目录下拉菜单
     def initChooseDir(self):
         data = json.load(open('config.json', 'r'))
@@ -126,7 +126,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.gameDirComboBox.currentIndex() == 0:
             # 传递参数至config.json
             data['game_dir']['index'] = 0
-        elif self.gameDirComboBox.currentIndex() == (self.gameDirComboBox.count()-1):
+        elif self.gameDirComboBox.currentIndex() == (self.gameDirComboBox.count() - 1):
             # todo 传递参数至config.json
             options = QFileDialog.Options()
             path = QFileDialog.getExistingDirectory(self, options=options)
@@ -155,6 +155,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.dirErrorHint.setText('')
         else:
             self.dirErrorHint.setText('当前路径无效，请重新选择。\n正确路径应以\"\\common\\Dead by Daylight\"结束')
+
     # 点击鼠标
     def mousePressEvent(self, event):
         if event.button() == Qt.LeftButton:
@@ -171,7 +172,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             moved = globalPos - self.mouseMovePos
             self.move(moved)
         super().mouseMoveEvent(event)
-
 
 # if __name__ == "__main__":
 #     from PyQt5.QtWidgets import QApplication
