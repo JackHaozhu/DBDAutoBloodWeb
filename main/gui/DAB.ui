@@ -1560,7 +1560,7 @@ QScrollArea:QWidget{
 QScrollBar:vertical {
     width: 8px;
     background: #272626;
-	margin: 10px 2px 10px 1px;
+	margin: 10px 0px 10px 3px;
     border-radius: 4px;
 }
 

@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="选择屠夫更新targetlist&#10;todo:&#10;config.json读写">
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="ListWidget中Item移动检测">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/dicGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/dicGen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/filedir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dev/filedir.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/dirInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -307,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714202218499</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="ListWidget中Item移动检测">
+      <option name="closed" value="true" />
+      <created>1714218753430</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1714218753430</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -333,7 +336,8 @@
     <MESSAGE value="更新gui" />
     <MESSAGE value="更新祭品字典" />
     <MESSAGE value="选择屠夫更新targetlist&#10;todo:&#10;config.json读写" />
-    <option name="LAST_COMMIT_MESSAGE" value="选择屠夫更新targetlist&#10;todo:&#10;config.json读写" />
+    <MESSAGE value="ListWidget中Item移动检测" />
+    <option name="LAST_COMMIT_MESSAGE" value="ListWidget中Item移动检测" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
