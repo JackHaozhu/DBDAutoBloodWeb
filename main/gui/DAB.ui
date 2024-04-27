@@ -71,6 +71,19 @@
         <number>0</number>
        </property>
        <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QLabel" name="icon">
          <property name="minimumSize">
           <size>
@@ -115,19 +128,6 @@
           <string>DAB</string>
          </property>
         </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
        </item>
        <item>
         <widget class="QPushButton" name="minimizeButton">
@@ -1160,12 +1160,13 @@ QListWidget::dropIndicator {
 }
 QListWidget::item{
 	color: #99bdc3;
-	height: 40px;
+	height: 80px;
 	margin-bottom: 5px;
 	margin-top: 5px;
 	border-radius: 10px;
 	border: 1px solid #4d4d4d;
 	opacity: 0.5;
+	padding-left: 40px;
 }
 QListWidget::item:hover {
 	background: #4d4d4d;
@@ -1180,7 +1181,7 @@ QListWidget::item:hover {
 QScrollBar:vertical {
     width: 7px;
     background: #272626;
-	margin: 10px 2px 10px 1px;
+	margin: 10px 0px 10px 3px;
     border-radius: 2px;
 }
 
@@ -1214,6 +1215,15 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                                 </property>
                                 <property name="defaultDropAction">
                                  <enum>Qt::MoveAction</enum>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>80</width>
+                                  <height>80</height>
+                                 </size>
+                                </property>
+                                <property name="textElideMode">
+                                 <enum>Qt::ElideLeft</enum>
                                 </property>
                                 <property name="sortingEnabled">
                                  <bool>false</bool>
@@ -1319,12 +1329,13 @@ QListWidget::dropIndicator {
 }
 QListWidget::item{
 	color: #99bdc3;
-	height: 40px;
+	height: 80px;
 	margin-bottom: 5px;
 	margin-top: 5px;
 	border-radius: 10px;
 	border: 1px solid #4d4d4d;
 	opacity: 0.5;
+	padding-left: 40px;
 }
 QListWidget::item:hover {
 	background: #4d4d4d;
@@ -1339,7 +1350,7 @@ QListWidget::item:selected {
 QScrollBar:vertical {
     width: 7px;
     background: #272626;
-	margin: 10px 2px 10px 1px;
+	margin: 10px 0px 10px 3px;
     border-radius: 2px;
 }
 
@@ -1370,6 +1381,12 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
                                 </property>
                                 <property name="defaultDropAction">
                                  <enum>Qt::MoveAction</enum>
+                                </property>
+                                <property name="iconSize">
+                                 <size>
+                                  <width>80</width>
+                                  <height>80</height>
+                                 </size>
                                 </property>
                                </widget>
                               </item>
@@ -2023,6 +2040,7 @@ QPushButton:pressed{
  </widget>
  <resources>
   <include location="guiresources.qrc"/>
+  <include location="C:/Users/asus/.designer/backup/guiresources.qrc"/>
  </resources>
  <connections>
   <connection>

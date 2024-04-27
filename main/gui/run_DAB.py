@@ -2,14 +2,16 @@ import os
 import json
 from . import dirInfo
 
-from PyQt5.QtCore import Qt, pyqtSlot
-from PyQt5.QtWidgets import QMainWindow, QRadioButton, QListView, QFileDialog, QApplication, QListWidgetItem
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QRadioButton, QListView, QFileDialog, QListWidgetItem
+from PyQt5.QtGui import QIcon
 from .DAB import Ui_MainWindow  # 导入通过pyuic5转换生成的UI文件中的类
 
 if dirInfo.get_program_install_location('黎明杀机') is not None:
     auto_game_dir = dirInfo.get_program_install_location('黎明杀机')
 auto_ui_dir = auto_game_dir + r'\DeadByDaylight\Content\UI\Icons'
 auto_char_dir = auto_ui_dir + '\\CharPortraits\\'
+auto_offering_dir = auto_ui_dir + '\\Favors\\'
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -29,7 +31,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 切换杀手
         for killerRadioButton in self.killerList.findChildren(QRadioButton):
             killerRadioButton.toggled.connect(self.killerToggled)
-
+        # 拖动杀手Item事件
+        self.killerChooseList.itemChanged.connect(self.killerItemMoved)
+        self.killerTargetList.itemChanged.connect(self.killerItemMoved)
         # 初始化页面至 主页-杀手
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
@@ -40,9 +44,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.killerTargetType.setView(QListView())
         # 初始化下拉菜单中自动选择目录
         self.initChooseDir()
-        # self.gameDirComboBox.setItemText(0, '自动选择目录：' + game_dir)
-        # self.gameDirComboBox.setCurrentIndex(0)
-        # self.checkGameDir()
         # 检测下拉菜单切换项目事件
         self.gameDirComboBox.activated.connect(self.chooseGameDir)
         # 鼠标按下事件处理函数
@@ -96,27 +97,65 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             char_dir = data['game_dir']['dir']
         char_dir = char_dir + r'\DeadByDaylight\Content\UI\Icons\CharPortraits\\'
         for name in killers:
-            target_img_dir = char_dir + dirInfo.character[name]
+            target_img_dir = char_dir + dirInfo.character_path[name]
             target_img_dir = target_img_dir.replace('\\', '/')
             button = self.findChild(QRadioButton, name)
             if button:
                 button.setStyleSheet(f'QRadioButton {{ border-image: url({target_img_dir}); }}')
 
+    # 加载杀手祭品与配件，读config
+    def loadKillerItems(self, killer_name):
+        data = json.load(open('config.json', 'r'))
+        if data['game_dir']['index'] == 0:
+            offering_path = auto_offering_dir
+        else:
+            offering_path = data['game_dir']['dir']
+        common_offering_list = list(dirInfo.offerings['killers'].keys())
+        self.killerChooseList.clear()
+        self.killerTargetList.clear()
+        for offering_name in common_offering_list:
+            print(killer_name)
+            print(offering_name)
+            item = QListWidgetItem(offering_name)
+            if killer_name in data['killer_config'] and offering_name in data['killer_config'][killer_name]:
+                self.killerTargetList.addItem(item)
+            else:
+                self.killerChooseList.addItem(item)
+            file_name = 'iconFavors_' + offering_name + '.png'
+            icon_path = offering_path + file_name
+            item.setIcon(QIcon(icon_path))  # todo 叠加稀有度背景
+            item.setTextAlignment(Qt.AlignCenter)
+            item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
+
+    # 杀手物品列表拖动事件，刷新列表，写入config
+    def killerItemMoved(self):
+        print('Item Changed!')
+
     # 切换杀手，加载其配件与祭品，读取config
     def killerToggled(self, checked):
         toggledButton = self.sender()
         if checked:
-            # todo 读写config.json
-            print(f'{toggledButton.objectName()} is checked!\nLoading {toggledButton.objectName()}\'s offerings and add-ons')
-            common_offering_list = list(dirInfo.offerings['killers'].keys())
-            print(common_offering_list)
-            self.killerChooseList.clear()
-            for offering_name in common_offering_list:
-                print(f'adding {offering_name}')
-                print(dirInfo.offerings['killers'][offering_name]['name'])
-                item = QListWidgetItem(offering_name)
-                self.killerChooseList.addItem(item)
-                item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
+            print(f'{toggledButton.objectName()} is checked!')
+            self.loadKillerItems(toggledButton.objectName())
+            # data = json.load(open('config.json', 'r'))
+            # if data['game_dir']['index'] == 0:
+            #     offering_path = auto_offering_dir
+            # else:
+            #     offering_path = data['game_dir']['dir']
+            # print(f'{toggledButton.objectName()} is checked!\nLoading {toggledButton.objectName()}\'s offerings and add-ons')
+            # common_offering_list = list(dirInfo.offerings['killers'].keys())
+            # print(common_offering_list)
+            # self.killerChooseList.clear()
+            # for offering_name in common_offering_list:
+            #     print(f'adding {offering_name}')
+            #     print(dirInfo.offerings['killers'][offering_name]['name'])
+            #     item = QListWidgetItem(offering_name)
+            #     self.killerChooseList.addItem(item)
+            #     file_name = 'iconFavors_' + offering_name + '.png'
+            #     icon_path = offering_path + file_name
+            #     item.setIcon(QIcon(icon_path))
+            #     item.setTextAlignment(Qt.AlignCenter)
+            #     item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
 

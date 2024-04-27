@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="更新祭品字典">
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="选择屠夫更新targetlist&#10;todo:&#10;config.json读写">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/dicGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/dicGen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/filedir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dev/filedir.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/main/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/gui/dirInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,34 +50,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.DAB.executor": "Run",
-    "Python.DBDAutoBloodWeb.executor": "Run",
-    "Python.GUI.executor": "Run",
-    "Python.QTSide6UI.executor": "Run",
-    "Python.crawler.executor": "Run",
-    "Python.dicGen.executor": "Run",
-    "Python.getGamePosition.executor": "Run",
-    "Python.gui.executor": "Run",
-    "Python.guitest.executor": "Run",
-    "Python.localResources.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.run_DAB.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.test_source2.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/PyCharm/Projects/DBDAutoBloodWeb/main/gui/icon_resources/backgrounds/items",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.DAB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.DBDAutoBloodWeb.executor&quot;: &quot;Run&quot;,
+    &quot;Python.GUI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QTSide6UI.executor&quot;: &quot;Run&quot;,
+    &quot;Python.crawler.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dicGen.executor&quot;: &quot;Run&quot;,
+    &quot;Python.getGamePosition.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.guitest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.localResources.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_DAB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_source2.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/PyCharm/Projects/DBDAutoBloodWeb/main/gui/icon_resources/backgrounds/items&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\PyCharm\Projects\DBDAutoBloodWeb\main\gui\icon_resources\backgrounds\items" />
@@ -293,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714200819679</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="选择屠夫更新targetlist&#10;todo:&#10;config.json读写">
+      <option name="closed" value="true" />
+      <created>1714202218499</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1714202218499</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -318,25 +332,21 @@
     <MESSAGE value="添加不同稀有度祭品与物品背景" />
     <MESSAGE value="更新gui" />
     <MESSAGE value="更新祭品字典" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新祭品字典" />
+    <MESSAGE value="选择屠夫更新targetlist&#10;todo:&#10;config.json读写" />
+    <option name="LAST_COMMIT_MESSAGE" value="选择屠夫更新targetlist&#10;todo:&#10;config.json读写" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main/gui/dirInfo.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main/gui/dirInfo.py</url>
           <line>108</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main/gui/run_DAB.py</url>
-          <line>52</line>
-          <option name="timeStamp" value="3" />
+          <url>file://$PROJECT_DIR$/main/gui/dirInfo.py</url>
+          <line>112</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

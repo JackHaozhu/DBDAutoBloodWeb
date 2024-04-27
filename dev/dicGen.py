@@ -1,25 +1,27 @@
 import os
 
-def list_files_to_file(directory, output_file):
-    # 打开输出文件以写入模式
-    with open(output_file, 'w') as f:
-        # 遍历指定目录及其子目录中的所有文件
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                # 获取文件的相对地址
-                relative_path = os.path.relpath(os.path.join(root, file), directory)
-                # 加上单引号
-                relative_path_quoted = "'" + relative_path + "',"
-                # 将相对地址写入文件
-                f.write(relative_path_quoted + '\n')
+def list_files(root_dir):
+    files_dict = {}
+    for root, dirs, files in os.walk(root_dir):
+        for file in files:
+            file_path = os.path.join(root, file)
+            file_name, file_extension = os.path.splitext(file)
+            after_underscore = file_name.split("_")[1] if "_" in file_name else file_name
+            relative_path = os.path.relpath(file_path, root_dir)
+            files_dict[after_underscore] = relative_path
+    return files_dict
 
-# 指定要遍历的文件夹路径
+def write_to_file(file_dict, output_file):
+    with open(output_file, "w") as f:
+        for key, value in file_dict.items():
+            f.write(f"'{key}': '{value}',\n")
+
+# 定义文件夹路径
 folder_path = r'D:\SteamLibrary\steamapps\common\Dead by Daylight\DeadByDaylight\Content\UI\Icons\Favors'
 
-# 指定输出文件路径
-output_file = "filedir.txt"
+# 获取文件信息
+files_info = list_files(folder_path)
 
-# 调用函数将文件相对地址写入到文件中
-list_files_to_file(folder_path, output_file)
-
-print("文件相对地址已写入到", output_file)
+# 将文件信息写入文件
+output_file_path = "filedir.txt"
+write_to_file(files_info, output_file_path)

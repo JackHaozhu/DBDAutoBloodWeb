@@ -15,7 +15,7 @@ QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1440, 900)
+        MainWindow.resize(1442, 900)
         MainWindow.setWindowFlag(Qt.FramelessWindowHint)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -41,6 +41,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.icon = QtWidgets.QLabel(self.widgetStatusBar)
         self.icon.setMinimumSize(QtCore.QSize(50, 50))
         self.icon.setMaximumSize(QtCore.QSize(50, 50))
@@ -62,8 +64,6 @@ class Ui_MainWindow(object):
 "}")
         self.titleLabel.setObjectName("titleLabel")
         self.horizontalLayout.addWidget(self.titleLabel)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
         self.minimizeButton = QtWidgets.QPushButton(self.widgetStatusBar)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -738,12 +738,13 @@ class Ui_MainWindow(object):
 "}\n"
 "QListWidget::item{\n"
 "    color: #99bdc3;\n"
-"    height: 40px;\n"
+"    height: 80px;\n"
 "    margin-bottom: 5px;\n"
 "    margin-top: 5px;\n"
 "    border-radius: 10px;\n"
 "    border: 1px solid #4d4d4d;\n"
 "    opacity: 0.5;\n"
+"    padding-left: 40px;\n"
 "}\n"
 "QListWidget::item:hover {\n"
 "    background: #4d4d4d;\n"
@@ -758,7 +759,7 @@ class Ui_MainWindow(object):
 "QScrollBar:vertical {\n"
 "    width: 7px;\n"
 "    background: #272626;\n"
-"    margin: 10px 2px 10px 1px;\n"
+"    margin: 10px 0px 10px 3px;\n"
 "    border-radius: 2px;\n"
 "}\n"
 "\n"
@@ -784,6 +785,8 @@ class Ui_MainWindow(object):
         self.killerChooseList.setDragEnabled(True)
         self.killerChooseList.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
         self.killerChooseList.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.killerChooseList.setIconSize(QtCore.QSize(80, 80))
+        self.killerChooseList.setTextElideMode(QtCore.Qt.ElideLeft)
         self.killerChooseList.setObjectName("killerChooseList")
         self.verticalLayout_7.addWidget(self.killerChooseList)
         self.horizontalLayout_7.addWidget(self.chooseSearchFrame)
@@ -843,12 +846,13 @@ class Ui_MainWindow(object):
 "}\n"
 "QListWidget::item{\n"
 "    color: #99bdc3;\n"
-"    height: 40px;\n"
+"    height: 80px;\n"
 "    margin-bottom: 5px;\n"
 "    margin-top: 5px;\n"
 "    border-radius: 10px;\n"
 "    border: 1px solid #4d4d4d;\n"
 "    opacity: 0.5;\n"
+"    padding-left: 40px;\n"
 "}\n"
 "QListWidget::item:hover {\n"
 "    background: #4d4d4d;\n"
@@ -863,7 +867,7 @@ class Ui_MainWindow(object):
 "QScrollBar:vertical {\n"
 "    width: 7px;\n"
 "    background: #272626;\n"
-"    margin: 10px 2px 10px 1px;\n"
+"    margin: 10px 0px 10px 3px;\n"
 "    border-radius: 2px;\n"
 "}\n"
 "\n"
@@ -888,6 +892,7 @@ class Ui_MainWindow(object):
         self.killerTargetList.setDragEnabled(True)
         self.killerTargetList.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
         self.killerTargetList.setDefaultDropAction(QtCore.Qt.MoveAction)
+        self.killerTargetList.setIconSize(QtCore.QSize(80, 80))
         self.killerTargetList.setObjectName("killerTargetList")
         self.verticalLayout_6.addWidget(self.killerTargetList)
         self.emptyTargetButtom = QtWidgets.QPushButton(self.targetFrame)
@@ -995,7 +1000,7 @@ class Ui_MainWindow(object):
 "QScrollBar:vertical {\n"
 "    width: 8px;\n"
 "    background: #272626;\n"
-"    margin: 10px 2px 10px 1px;\n"
+"    margin: 10px 0px 10px 3px;\n"
 "    border-radius: 4px;\n"
 "}\n"
 "\n"
@@ -1333,7 +1338,6 @@ class Ui_MainWindow(object):
         self.saveSettings.setText(_translate("MainWindow", "保存"))
 
 from . import guiresources
-
 
 if __name__ == "__main__":
     import sys
