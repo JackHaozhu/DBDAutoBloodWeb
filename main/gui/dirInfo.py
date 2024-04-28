@@ -110,7 +110,7 @@ killer_key = [
     'TheXenomorph', 'TheYerkes', 'TheUnknown'
 ]
 
-human_key = [
+survivor_key = [
     'DwightFairfield', 'MegThomas', 'ClaudetteMorel', 'JakePark',
     'NeaKarlsson', 'LaurieStrode', 'AceVisconti', 'BillOverbeck',
     'FengMin', 'DavidKing', 'QuentinSmith', 'DavidTapp',

@@ -36,7 +36,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # 拖动杀手Item事件
         # self.killerChooseList.itemChanged.connect(self.killerItemMoved)
         # self.killerTargetList.itemChanged.connect(self.killerItemMoved)
-        self.killerChooseList.itemPressed.connect(self.killerItemMoved)
+        # self.killerChooseList.itemPressed.connect(self.killerItemMoved)
         # 初始化页面至 主页-杀手
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
@@ -117,8 +117,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.killerChooseList.clear()
         self.killerTargetList.clear()
         for offering_name in common_offering_list:
-            print(killer_name)
-            print(offering_name)
+            # print(killer_name)
+            # print(offering_name)
             item = QListWidgetItem(offering_name)
             if killer_name in data['killer_config'] and offering_name in data['killer_config'][killer_name]:
                 self.killerTargetList.addItem(item)

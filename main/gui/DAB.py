@@ -13,63 +13,79 @@ from PyQt5.QtCore import Qt, pyqtSignal
 
 QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 
-def select_sig_item(signame):
-    item_widget = QtWidgets.QWidget()
-    root = QtWidgets.QHBoxLayout()
-    chk = QtWidgets.QCheckBox()
-    name_label = QtWidgets.QLabel(signame)
-    name_label.setObjectName('signame')
-    value_label = QtWidgets.QLabel('value')
-    value_label.setObjectName(signame + '_value')
-    root.addWidget(chk, 0, Qt.AlignLeft)
-    root.addWidget(name_label, 1, Qt.AlignLeft)
-    root.addWidget(value_label, 0, Qt.AlignRight)
-    item_widget.setLayout(root)
-    return item_widget
+
+def createNewItem(originalItem):
+    # item_widget = QtWidgets.QListWidgetItem()
+    # item_widget.setText(originItem.text())
+    # root = QtWidgets.QHBoxLayout()
+    # chk = QtWidgets.QCheckBox()
+    # name_label = QtWidgets.QLabel(signame)
+    # name_label.setObjectName('signame')
+    # value_label = QtWidgets.QLabel('value')
+    # value_label.setObjectName(signame + '_value')
+    # root.addWidget(chk, 0, Qt.AlignLeft)
+    # root.addWidget(name_label, 1, Qt.AlignLeft)
+    # root.addWidget(value_label, 0, Qt.AlignRight)
+    # item_widget.setLayout(root)
+    return originalItem
+
+
 class CustomListWidget(QtWidgets.QListWidget):
     task_data_signal = pyqtSignal(list)
 
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super(CustomListWidget, self).__init__(parent)
-        self.setAcceptDrops(True)
-        self.setDragEnabled(True)
-        self.itemClicked.connect(self._select_current_index)
+        self.setAcceptDrops(True)  # 开启接受拖入
+        self.setDragEnabled(True)  # 开启拖拽
+        self.itemClicked.connect(self._select_current_index)  # debug
 
-    def _select_current_index(self, index):
+    def _select_current_index(self, index):  # debug
         print('_select_current_index:', index)
 
     def dropEvent(self, QDropEvent):
+        print('drop event occurred')  # debug
+        # 获取dropEvent发生相对坐标
         pos = QDropEvent.pos()
+        print('pos:', pos)  # debug
+        # 获取dropEvent发生处原有item
         current_item = self.itemAt(pos)
-        current_index = self.indexFromItem(current_item)
-        current_row = current_index.row()
-        if current_row == -1:
+        # 检查current_item是否存在
+        if current_item == None:
+            print('No Current Item!')  # debug
+            # current_item不存在，dropEvent在列表空位，自动drop到列表末尾
             current_row = self.count()
-        print('current_row:', current_row)
-        source_Widget = QDropEvent.source()
-        items = source_Widget.selectedItems()
-        for item in items:
-            text = item.text()
-            print('text1: ' + text)
-            if not text:
-                print('enter not text')
-                w = source_Widget.itemWidget(item)
-                label = w.findChild(QtWidgets.QLabel, 'signame')
-                text = label.text()
-                print('text: ' + text)
-            print('didn\'t enter not text')
-            row_index = source_Widget.indexFromItem(item).row()
-            print(row_index)
-            source_Widget.takeItem(row_index)
+        else:
+            print('Current Item:', current_item.text())  # debug
+            # 获取current_item信息，index为数据地址，row为行数
+            current_index = self.indexFromItem(current_item)
+            current_row = current_index.row()
+            print('Current Row:', current_row)  # debug
 
-            new_item = select_sig_item(text)
-            item = QtWidgets.QListWidgetItem()
-            self.insertItem(current_row, item)
-            self.setItemWidget(item, new_item)
+        current_list = self.objectName()  # debug
+        print('Current List:', current_list)  # debug
+        print('self.count():', self.count())  # debug
+        source_Widget = QDropEvent.source()
+        print('Source List:', source_Widget.objectName())  # debug
+        items = source_Widget.selectedItems()
+        print('Items:', items[0])  # debug
+        item = items[0]
+        text = item.text()
+        print('text1: ' + text)
+        if not text:
+            print('enter not text')
+            w = source_Widget.itemWidget(item)
+            label = w.findChild(QtWidgets.QLabel, 'signame')
+            text = label.text()
+            print('text: ' + text)
+        print('didn\'t enter not text')
+        row_index = source_Widget.indexFromItem(item).row()
+        print(row_index)
+        source_Widget.takeItem(row_index)
+        self.insertItem(current_row, item)
 
         if self != source_Widget:
             old_item = QtWidgets.QListWidgetItem(text)
-            source_Widget.insertItem(row_index, old_item)
+            # source_Widget.insertItem(row_index, old_item)
 
         print('congrats')
 
