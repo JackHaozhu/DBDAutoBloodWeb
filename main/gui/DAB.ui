@@ -71,19 +71,6 @@
         <number>0</number>
        </property>
        <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <widget class="QLabel" name="icon">
          <property name="minimumSize">
           <size>
@@ -128,6 +115,19 @@
           <string>DAB</string>
          </property>
         </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="QPushButton" name="minimizeButton">
@@ -1166,7 +1166,7 @@ QListWidget::item{
 	border-radius: 10px;
 	border: 1px solid #4d4d4d;
 	opacity: 0.5;
-	padding-left: 40px;
+	padding-left: 20px;
 }
 QListWidget::item:hover {
 	background: #4d4d4d;
@@ -1335,7 +1335,7 @@ QListWidget::item{
 	border-radius: 10px;
 	border: 1px solid #4d4d4d;
 	opacity: 0.5;
-	padding-left: 40px;
+	padding-left: 20px;
 }
 QListWidget::item:hover {
 	background: #4d4d4d;
@@ -2040,7 +2040,7 @@ QPushButton:pressed{
  </widget>
  <resources>
   <include location="guiresources.qrc"/>
-  <include location="C:/Users/asus/.designer/backup/guiresources.qrc"/>
+  <include location="guiresources.qrc"/>
  </resources>
  <connections>
   <connection>

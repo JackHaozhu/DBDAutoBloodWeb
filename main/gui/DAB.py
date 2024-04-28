@@ -9,9 +9,35 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSignal
 
 QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+
+
+class CustomListWidget(QtWidgets.QListWidget):
+    task_data_signal = pyqtSignal(list)
+
+    def __init__(self, parent = None):
+        super(CustomListWidget, self).__init__(parent)
+        self.setAcceptDrops(True)
+        self.setDragEnabled(True)
+        self.itemClicked.connect(self._select_current_index)
+
+    def _select_current_index(self, index):
+        print('_select_current_index:', index)
+
+    def dropEvent(self, QDropEvent):
+        # pos = QDropEvent.pos()
+        # current_item = self.itemAt(pos)
+        # current_index = self.indexFromItem(current_item)
+        # current_row = current_index.row()
+        # if current_row == -1:
+        #     current_row = self.count()
+        # print('current_row:', current_row)
+        # source_Widget = QDropEvent.source()
+        print('congrats')
+
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -24,8 +50,8 @@ class Ui_MainWindow(object):
         MainWindow.setSizePolicy(sizePolicy)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("QWidget#centralwidget{\n"
-"    background-color: #161616;\n"
-"}")
+                                         "    background-color: #161616;\n"
+                                         "}")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -34,21 +60,19 @@ class Ui_MainWindow(object):
         self.widgetStatusBar = QtWidgets.QWidget(self.centralwidget)
         self.widgetStatusBar.setMaximumSize(QtCore.QSize(16777215, 50))
         self.widgetStatusBar.setStyleSheet("QWidget#widgetStatusBar{\n"
-"    background-color: #161616;\n"
-"}")
+                                           "    background-color: #161616;\n"
+                                           "}")
         self.widgetStatusBar.setObjectName("widgetStatusBar")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widgetStatusBar)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
         self.icon = QtWidgets.QLabel(self.widgetStatusBar)
         self.icon.setMinimumSize(QtCore.QSize(50, 50))
         self.icon.setMaximumSize(QtCore.QSize(50, 50))
         self.icon.setStyleSheet("QLabel#icon{\n"
-"    margin-top: 2px;\n"
-"}")
+                                "    margin-top: 2px;\n"
+                                "}")
         self.icon.setText("")
         self.icon.setPixmap(QtGui.QPixmap(":/icon/icon_resources/escapeCake.png"))
         self.icon.setScaledContents(True)
@@ -56,14 +80,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.icon)
         self.titleLabel = QtWidgets.QLabel(self.widgetStatusBar)
         self.titleLabel.setStyleSheet("QLabel#titleLabel{\n"
-"    color: white;\n"
-"    font: 16px \"微软雅黑\";\n"
-"    margin-left: 0px;\n"
-"    margin-right: 10px;\n"
-"    margin-top: 0px;\n"
-"}")
+                                      "    color: white;\n"
+                                      "    font: 16px \"微软雅黑\";\n"
+                                      "    margin-left: 0px;\n"
+                                      "    margin-right: 10px;\n"
+                                      "    margin-top: 0px;\n"
+                                      "}")
         self.titleLabel.setObjectName("titleLabel")
         self.horizontalLayout.addWidget(self.titleLabel)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
         self.minimizeButton = QtWidgets.QPushButton(self.widgetStatusBar)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -71,15 +97,15 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.minimizeButton.sizePolicy().hasHeightForWidth())
         self.minimizeButton.setSizePolicy(sizePolicy)
         self.minimizeButton.setStyleSheet("QPushButton#minimizeButton {\n"
-"    border: none;\n"
-"    border-radius: 10px;\n"
-"    width: 80px;\n"
-"    height: 50px;\n"
-"}\n"
-"\n"
-"QPushButton#minimizeButton:hover{\n"
-"    background-color: #4D4D4D;\n"
-"}")
+                                          "    border: none;\n"
+                                          "    border-radius: 10px;\n"
+                                          "    width: 80px;\n"
+                                          "    height: 50px;\n"
+                                          "}\n"
+                                          "\n"
+                                          "QPushButton#minimizeButton:hover{\n"
+                                          "    background-color: #4D4D4D;\n"
+                                          "}")
         self.minimizeButton.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/original/icon_resources/最小化.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -94,15 +120,15 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.closeButton.sizePolicy().hasHeightForWidth())
         self.closeButton.setSizePolicy(sizePolicy)
         self.closeButton.setStyleSheet("QPushButton#closeButton {\n"
-"    border: none;\n"
-"    border-radius: 10px;\n"
-"    width: 80px;\n"
-"    height: 50px;\n"
-"}\n"
-"\n"
-"QPushButton#closeButton:hover{\n"
-"    background-color: #4D4D4D;\n"
-"}")
+                                       "    border: none;\n"
+                                       "    border-radius: 10px;\n"
+                                       "    width: 80px;\n"
+                                       "    height: 50px;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton#closeButton:hover{\n"
+                                       "    background-color: #4D4D4D;\n"
+                                       "}")
         self.closeButton.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/original/icon_resources/关闭.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -121,38 +147,38 @@ class Ui_MainWindow(object):
         self.mainMenu.setMinimumSize(QtCore.QSize(115, 0))
         self.mainMenu.setMaximumSize(QtCore.QSize(115, 16777215))
         self.mainMenu.setStyleSheet("QWidget#mainMenu{\n"
-"}\n"
-"QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 5px;\n"
-"    width: 45px;\n"
-"    height: 45px;\n"
-"}\n"
-"QPushButton:hover{\n"
-"    background-color: #4D4D4D;\n"
-"}\n"
-"\n"
-"QRadioButton {\n"
-"    border: none;\n"
-"    border-radius: 10px;\n"
-"    width: 75px;\n"
-"    height: 75px;\n"
-"    color: rgb(255, 255, 255);\n"
-"    font: 5pt \"微软雅黑\";\n"
-"}\n"
-"QRadioButton::indicator{\n"
-"    width: 0px;\n"
-"    height: 0px;\n"
-"}\n"
-"QRadioButton:hover{\n"
-"    background-color: #4d4d4d;\n"
-"}\n"
-"QRadioButton:checked{\n"
-"    background-color: #313131;\n"
-"}\n"
-"QRadioButton:checked:hover{\n"
-"    background-color: #4d4d4d;\n"
-"}")
+                                    "}\n"
+                                    "QPushButton {\n"
+                                    "    border: none;\n"
+                                    "    border-radius: 5px;\n"
+                                    "    width: 45px;\n"
+                                    "    height: 45px;\n"
+                                    "}\n"
+                                    "QPushButton:hover{\n"
+                                    "    background-color: #4D4D4D;\n"
+                                    "}\n"
+                                    "\n"
+                                    "QRadioButton {\n"
+                                    "    border: none;\n"
+                                    "    border-radius: 10px;\n"
+                                    "    width: 75px;\n"
+                                    "    height: 75px;\n"
+                                    "    color: rgb(255, 255, 255);\n"
+                                    "    font: 5pt \"微软雅黑\";\n"
+                                    "}\n"
+                                    "QRadioButton::indicator{\n"
+                                    "    width: 0px;\n"
+                                    "    height: 0px;\n"
+                                    "}\n"
+                                    "QRadioButton:hover{\n"
+                                    "    background-color: #4d4d4d;\n"
+                                    "}\n"
+                                    "QRadioButton:checked{\n"
+                                    "    background-color: #313131;\n"
+                                    "}\n"
+                                    "QRadioButton:checked:hover{\n"
+                                    "    background-color: #4d4d4d;\n"
+                                    "}")
         self.mainMenu.setObjectName("mainMenu")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.mainMenu)
         self.verticalLayout_2.setContentsMargins(20, 10, 20, 10)
@@ -167,11 +193,11 @@ class Ui_MainWindow(object):
         self.home.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.home.setAutoFillBackground(False)
         self.home.setStyleSheet("QRadioButton{\n"
-"    border-image: url(:/original/icon_resources/主页.svg);\n"
-"}\n"
-"QRadioButton:checked{\n"
-"    border-image: url(:/chosen/icon_resources/主页-选中.svg);\n"
-"}")
+                                "    border-image: url(:/original/icon_resources/主页.svg);\n"
+                                "}\n"
+                                "QRadioButton:checked{\n"
+                                "    border-image: url(:/chosen/icon_resources/主页-选中.svg);\n"
+                                "}")
         self.home.setText("")
         self.home.setIconSize(QtCore.QSize(30, 30))
         self.home.setChecked(True)
@@ -184,11 +210,11 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.statistics.sizePolicy().hasHeightForWidth())
         self.statistics.setSizePolicy(sizePolicy)
         self.statistics.setStyleSheet("QRadioButton{\n"
-"    border-image: url(:/original/icon_resources/统计.svg);\n"
-"}\n"
-"QRadioButton:checked{\n"
-"    border-image: url(:/chosen/icon_resources/统计-选中.png)\n"
-"}")
+                                      "    border-image: url(:/original/icon_resources/统计.svg);\n"
+                                      "}\n"
+                                      "QRadioButton:checked{\n"
+                                      "    border-image: url(:/chosen/icon_resources/统计-选中.png)\n"
+                                      "}")
         self.statistics.setText("")
         self.statistics.setIconSize(QtCore.QSize(30, 30))
         self.statistics.setChecked(False)
@@ -198,12 +224,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addItem(spacerItem1)
         self.radioButton = QtWidgets.QRadioButton(self.mainMenu)
         self.radioButton.setStyleSheet("QRadioButton{\n"
-"    border-image: url(:/original/icon_resources/设置.svg);\n"
-"    margin-bottom: 5px\n"
-"}\n"
-"QRadioButton:checked{\n"
-"    border-image: url(:/chosen/icon_resources/设置选中.svg)\n"
-"}")
+                                       "    border-image: url(:/original/icon_resources/设置.svg);\n"
+                                       "    margin-bottom: 5px\n"
+                                       "}\n"
+                                       "QRadioButton:checked{\n"
+                                       "    border-image: url(:/chosen/icon_resources/设置选中.svg)\n"
+                                       "}")
         self.radioButton.setText("")
         self.radioButton.setIconSize(QtCore.QSize(30, 30))
         self.radioButton.setObjectName("radioButton")
@@ -211,26 +237,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.mainMenu)
         self.content = QtWidgets.QWidget(self.widgetMain)
         self.content.setStyleSheet("QWidget#content{\n"
-"    background-color: #272626;\n"
-"    border-radius: 10px;\n"
-"    margin: 5px;\n"
-"}")
+                                   "    background-color: #272626;\n"
+                                   "    border-radius: 10px;\n"
+                                   "    margin: 5px;\n"
+                                   "}")
         self.content.setObjectName("content")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.content)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.contentStackedWidget = QtWidgets.QStackedWidget(self.content)
         self.contentStackedWidget.setStyleSheet("QStackedWidget {\n"
-"    background: #272626;\n"
-"    border: none;\n"
-"}\n"
-"QWidget {\n"
-"    background: #272626;\n"
-"}\n"
-"QStackedWidget:tab-bar {\n"
-"    /* 隐藏切页按钮 */\n"
-"    visibility: hidden;\n"
-"}\n"
-"")
+                                                "    background: #272626;\n"
+                                                "    border: none;\n"
+                                                "}\n"
+                                                "QWidget {\n"
+                                                "    background: #272626;\n"
+                                                "}\n"
+                                                "QStackedWidget:tab-bar {\n"
+                                                "    /* 隐藏切页按钮 */\n"
+                                                "    visibility: hidden;\n"
+                                                "}\n"
+                                                "")
         self.contentStackedWidget.setObjectName("contentStackedWidget")
         self.home_widget = QtWidgets.QWidget()
         self.home_widget.setObjectName("home_widget")
@@ -238,49 +264,49 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.label = QtWidgets.QLabel(self.home_widget)
         self.label.setStyleSheet("font: 75 32px \"微软雅黑\";\n"
-"color: white;")
+                                 "color: white;")
         self.label.setObjectName("label")
         self.verticalLayout_4.addWidget(self.label)
         self.chooseType = QtWidgets.QTabWidget(self.home_widget)
         self.chooseType.setStyleSheet("\n"
-"QTabWidget::pane{\n"
-"    border: none;\n"
-"}\n"
-"\n"
-"\n"
-"/* 设置Tab项的样式 */\n"
-"QTabBar::tab {\n"
-"    background: transparent;\n"
-"    border: none;\n"
-"    border-radius: 6px;\n"
-"    font: 20px \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"    margin-right: 0px;\n"
-"    width: 100px;\n"
-"    height: 40px;\n"
-"    margin-right: 0px;\n"
-"    margin-left: 0px;\n"
-"    margin-top: 8px;\n"
-"    margin-bottom: 8px;\n"
-"}\n"
-"\n"
-"/* 鼠标悬停时的样式 */\n"
-"QTabBar::tab:hover {\n"
-"    background: #4D4D4D; /* 设置鼠标悬停时的背景色 */\n"
-"}\n"
-"\n"
-"/* 选中Tab项的样式 */\n"
-"QTabBar::tab:selected {\n"
-"    margin-top: 8px; /* 设置选中Tab项不放大 */\n"
-"    background-color: transparent;\n"
-"    border-bottom: 4px solid #017AFF;\n"
-"    color: #017AFF;\n"
-"}\n"
-"\n"
-"QTabBar::tab:selected:hover {\n"
-"    background: #4D4D4D;\n"
-"}\n"
-"")
+                                      "QTabWidget::pane{\n"
+                                      "    border: none;\n"
+                                      "}\n"
+                                      "\n"
+                                      "\n"
+                                      "/* 设置Tab项的样式 */\n"
+                                      "QTabBar::tab {\n"
+                                      "    background: transparent;\n"
+                                      "    border: none;\n"
+                                      "    border-radius: 6px;\n"
+                                      "    font: 20px \"微软雅黑\";\n"
+                                      "    color: #99BDC3;\n"
+                                      "    margin-right: 0px;\n"
+                                      "    width: 100px;\n"
+                                      "    height: 40px;\n"
+                                      "    margin-right: 0px;\n"
+                                      "    margin-left: 0px;\n"
+                                      "    margin-top: 8px;\n"
+                                      "    margin-bottom: 8px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "/* 鼠标悬停时的样式 */\n"
+                                      "QTabBar::tab:hover {\n"
+                                      "    background: #4D4D4D; /* 设置鼠标悬停时的背景色 */\n"
+                                      "}\n"
+                                      "\n"
+                                      "/* 选中Tab项的样式 */\n"
+                                      "QTabBar::tab:selected {\n"
+                                      "    margin-top: 8px; /* 设置选中Tab项不放大 */\n"
+                                      "    background-color: transparent;\n"
+                                      "    border-bottom: 4px solid #017AFF;\n"
+                                      "    color: #017AFF;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QTabBar::tab:selected:hover {\n"
+                                      "    background: #4D4D4D;\n"
+                                      "}\n"
+                                      "")
         self.chooseType.setTabPosition(QtWidgets.QTabWidget.North)
         self.chooseType.setObjectName("chooseType")
         self.killerTab = QtWidgets.QWidget()
@@ -290,8 +316,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.widget = QtWidgets.QWidget(self.killerTab)
         self.widget.setStyleSheet("Qwidget{\n"
-"    \n"
-"}")
+                                  "    \n"
+                                  "}")
         self.widget.setObjectName("widget")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget)
         self.horizontalLayout_4.setContentsMargins(-1, -1, 0, -1)
@@ -304,57 +330,57 @@ class Ui_MainWindow(object):
         self.killerList.setSizePolicy(sizePolicy)
         self.killerList.setMinimumSize(QtCore.QSize(680, 0))
         self.killerList.setStyleSheet("QScrollArea{\n"
-"    border: 3px solid #4d4d4d;\n"
-"    border-radius: 10px;\n"
-"}\n"
-"QRadioButton {\n"
-"    margin: 5px;\n"
-"    height: 133px;\n"
-"    width: 127px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"}\n"
-"QRadioButton::indicator{\n"
-"    width: 0px;\n"
-"    height: 0px;\n"
-"}\n"
-"QRadioButton:pressed {\n"
-"    background-color: #3d3d3d;\n"
-"}\n"
-"QRadioButton:hover{\n"
-"    background-color: #4d4d4d;\n"
-"}\n"
-"QRadioButton:checked{\n"
-"    background-color: #313131;\n"
-"    border: 3px solid gray;\n"
-"}\n"
-"QRadioButton:checked:hover{\n"
-"    background-color: #4d4d4d;\n"
-"}\n"
-"QScrollBar:vertical {\n"
-"    width: 8px;\n"
-"    background: #272626;\n"
-"    margin: 10px 2px 10px 1px;\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: gray;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: darkgray;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
-"    background: none;\n"
-"    height: 0px;\n"
-"    width: 0px;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}")
+                                      "    border: 3px solid #4d4d4d;\n"
+                                      "    border-radius: 10px;\n"
+                                      "}\n"
+                                      "QRadioButton {\n"
+                                      "    margin: 5px;\n"
+                                      "    height: 133px;\n"
+                                      "    width: 127px;\n"
+                                      "    border: 2px solid #4d4d4d;\n"
+                                      "}\n"
+                                      "QRadioButton::indicator{\n"
+                                      "    width: 0px;\n"
+                                      "    height: 0px;\n"
+                                      "}\n"
+                                      "QRadioButton:pressed {\n"
+                                      "    background-color: #3d3d3d;\n"
+                                      "}\n"
+                                      "QRadioButton:hover{\n"
+                                      "    background-color: #4d4d4d;\n"
+                                      "}\n"
+                                      "QRadioButton:checked{\n"
+                                      "    background-color: #313131;\n"
+                                      "    border: 3px solid gray;\n"
+                                      "}\n"
+                                      "QRadioButton:checked:hover{\n"
+                                      "    background-color: #4d4d4d;\n"
+                                      "}\n"
+                                      "QScrollBar:vertical {\n"
+                                      "    width: 8px;\n"
+                                      "    background: #272626;\n"
+                                      "    margin: 10px 2px 10px 1px;\n"
+                                      "    border-radius: 4px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::handle:vertical {\n"
+                                      "    background: gray;\n"
+                                      "    border-radius: 2px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::handle:vertical:hover {\n"
+                                      "    background: darkgray;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+                                      "    background: none;\n"
+                                      "    height: 0px;\n"
+                                      "    width: 0px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                      "    background: none;\n"
+                                      "}")
         self.killerList.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.killerList.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.killerList.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
@@ -363,8 +389,8 @@ class Ui_MainWindow(object):
         self.killerListContent = QtWidgets.QWidget()
         self.killerListContent.setGeometry(QtCore.QRect(0, 0, 666, 1389))
         self.killerListContent.setStyleSheet("QWidget#scrollAreaWidgetContents{\n"
-"    \n"
-"}")
+                                             "    \n"
+                                             "}")
         self.killerListContent.setObjectName("killerListContent")
         self.gridLayout = QtWidgets.QGridLayout(self.killerListContent)
         self.gridLayout.setObjectName("gridLayout")
@@ -617,8 +643,8 @@ class Ui_MainWindow(object):
         self.chooseSearchFrame.setMinimumSize(QtCore.QSize(274, 0))
         self.chooseSearchFrame.setMaximumSize(QtCore.QSize(274, 16777215))
         self.chooseSearchFrame.setStyleSheet("QWidget#chooseSearchFrame {\n"
-"    width: 277;\n"
-"}")
+                                             "    width: 277;\n"
+                                             "}")
         self.chooseSearchFrame.setObjectName("chooseSearchFrame")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.chooseSearchFrame)
         self.verticalLayout_7.setContentsMargins(-1, 0, -1, 0)
@@ -627,60 +653,60 @@ class Ui_MainWindow(object):
         self.killerTargetType = QtWidgets.QComboBox(self.chooseSearchFrame)
         self.killerTargetType.setAutoFillBackground(False)
         self.killerTargetType.setStyleSheet("QComboBox{\n"
-"    height: 36px;\n"
-"    color: #99bdc3;\n"
-"    font: 21px \"微软雅黑\";\n"
-"    border: 2px solid #4d4d4d;\n"
-"    border-bottom: 1px solid #4d4d4d;\n"
-"    border-top-left-radius: 10px;  /* 左上角 */\n"
-"    border-top-right-radius: 10px;  /* 右上角 */\n"
-"    border-bottom-right-radius: 0px;  /* 右下角 */\n"
-"    border-bottom-left-radius: 0px;  /* 左下角 */\n"
-"    margin-top: 0px;\n"
-"    margin-bottom: 0px;\n"
-"    padding-left: 6px;\n"
-"}\n"
-"QComboBox:hover{\n"
-"    border: 2px solid #8a8a8a;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down{\n"
-"    border-image: url(:/icon/icon_resources/下拉箭头.svg);\n"
-"    width: 22px;\n"
-"    height: 22px;\n"
-"    margin-top: 9px;\n"
-"    margin-right: 10px;\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView{\n"
-"    border: 2px solid #8a8a8a;\n"
-"    border-top: 1px solid #8a8a8a;\n"
-"    border-top-left-radius: 0px;  /* 左上角 */\n"
-"    border-top-right-radius: 0px;  /* 右上角 */\n"
-"    border-bottom-right-radius: 10px;  /* 右下角 */\n"
-"    border-bottom-left-radius: 10px;  /* 左下角 */\n"
-"    outline: none;\n"
-"    color: #cccccc;\n"
-"    font: 21px \"微软雅黑\";\n"
-"    background: #272626;\n"
-"    padding: 12px 6px 12px 6px;\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item{\n"
-"    border: none;\n"
-"    outline: none;\n"
-"    height: 36px;\n"
-"    border-radius: 10px;\n"
-"    background: #272626;\n"
-"}\n"
-"QComboBox QAbstractItemView::item:selected{\n"
-"    border-radius: 10px;\n"
-"    background: #313131;\n"
-"}\n"
-"QComboBox QAbstractItemView::item:hover{\n"
-"    border-radius: 10px;\n"
-"    background: #4D4D4D;\n"
-"}")
+                                            "    height: 36px;\n"
+                                            "    color: #99bdc3;\n"
+                                            "    font: 21px \"微软雅黑\";\n"
+                                            "    border: 2px solid #4d4d4d;\n"
+                                            "    border-bottom: 1px solid #4d4d4d;\n"
+                                            "    border-top-left-radius: 10px;  /* 左上角 */\n"
+                                            "    border-top-right-radius: 10px;  /* 右上角 */\n"
+                                            "    border-bottom-right-radius: 0px;  /* 右下角 */\n"
+                                            "    border-bottom-left-radius: 0px;  /* 左下角 */\n"
+                                            "    margin-top: 0px;\n"
+                                            "    margin-bottom: 0px;\n"
+                                            "    padding-left: 6px;\n"
+                                            "}\n"
+                                            "QComboBox:hover{\n"
+                                            "    border: 2px solid #8a8a8a;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QComboBox::drop-down{\n"
+                                            "    border-image: url(:/icon/icon_resources/下拉箭头.svg);\n"
+                                            "    width: 22px;\n"
+                                            "    height: 22px;\n"
+                                            "    margin-top: 9px;\n"
+                                            "    margin-right: 10px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QComboBox QAbstractItemView{\n"
+                                            "    border: 2px solid #8a8a8a;\n"
+                                            "    border-top: 1px solid #8a8a8a;\n"
+                                            "    border-top-left-radius: 0px;  /* 左上角 */\n"
+                                            "    border-top-right-radius: 0px;  /* 右上角 */\n"
+                                            "    border-bottom-right-radius: 10px;  /* 右下角 */\n"
+                                            "    border-bottom-left-radius: 10px;  /* 左下角 */\n"
+                                            "    outline: none;\n"
+                                            "    color: #cccccc;\n"
+                                            "    font: 21px \"微软雅黑\";\n"
+                                            "    background: #272626;\n"
+                                            "    padding: 12px 6px 12px 6px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QComboBox QAbstractItemView::item{\n"
+                                            "    border: none;\n"
+                                            "    outline: none;\n"
+                                            "    height: 36px;\n"
+                                            "    border-radius: 10px;\n"
+                                            "    background: #272626;\n"
+                                            "}\n"
+                                            "QComboBox QAbstractItemView::item:selected{\n"
+                                            "    border-radius: 10px;\n"
+                                            "    background: #313131;\n"
+                                            "}\n"
+                                            "QComboBox QAbstractItemView::item:hover{\n"
+                                            "    border-radius: 10px;\n"
+                                            "    background: #4D4D4D;\n"
+                                            "}")
         self.killerTargetType.setFrame(True)
         self.killerTargetType.setObjectName("killerTargetType")
         self.killerTargetType.addItem("")
@@ -694,93 +720,93 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.searchKillerItem.sizePolicy().hasHeightForWidth())
         self.searchKillerItem.setSizePolicy(sizePolicy)
         self.searchKillerItem.setStyleSheet("QLineEdit {\n"
-"    height: 36px;\n"
-"    margin-bottom: 0px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"    border-top: 1px solid #4d4d4d;\n"
-"    border-bottom: 1px solid #4d4d4d;\n"
-"    color: #99bdc3;\n"
-"    font: 21px \"微软雅黑\";\n"
-"    padding-left: 6px;\n"
-"    padding-right: 6px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover {\n"
-"    border-color: #8a8a8a\n"
-"}")
+                                            "    height: 36px;\n"
+                                            "    margin-bottom: 0px;\n"
+                                            "    border: 2px solid #4d4d4d;\n"
+                                            "    border-top: 1px solid #4d4d4d;\n"
+                                            "    border-bottom: 1px solid #4d4d4d;\n"
+                                            "    color: #99bdc3;\n"
+                                            "    font: 21px \"微软雅黑\";\n"
+                                            "    padding-left: 6px;\n"
+                                            "    padding-right: 6px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QLineEdit:hover {\n"
+                                            "    border-color: #8a8a8a\n"
+                                            "}")
         self.searchKillerItem.setInputMask("")
         self.searchKillerItem.setText("")
         self.searchKillerItem.setObjectName("searchKillerItem")
         self.verticalLayout_7.addWidget(self.searchKillerItem)
-        self.killerChooseList = QtWidgets.QListWidget(self.chooseSearchFrame)
+        self.killerChooseList = CustomListWidget(self.chooseSearchFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.killerChooseList.sizePolicy().hasHeightForWidth())
         self.killerChooseList.setSizePolicy(sizePolicy)
         self.killerChooseList.setStyleSheet("QListWidget{\n"
-"    border: 2px solid #4d4d4d;\n"
-"    border-top: 1px solid #4d4d4d;\n"
-"    border-top-left-radius: 0px;  /* 左上角 */\n"
-"    border-top-right-radius: 0px;  /* 右上角 */\n"
-"    border-bottom-right-radius: 10px;  /* 右下角 */\n"
-"    border-bottom-left-radius: 10px;  /* 左下角 */\n"
-"    margin-top: 0px;\n"
-"    padding: 10px 5px 10px 5px;\n"
-"}\n"
-"\n"
-"\n"
-"QListWidget:focus {\n"
-"    outline: none;\n"
-"}\n"
-"QListWidget::dropIndicator {\n"
-"    color: #3d3d3d;\n"
-"}\n"
-"QListWidget::item{\n"
-"    color: #99bdc3;\n"
-"    height: 80px;\n"
-"    margin-bottom: 5px;\n"
-"    margin-top: 5px;\n"
-"    border-radius: 10px;\n"
-"    border: 1px solid #4d4d4d;\n"
-"    opacity: 0.5;\n"
-"    padding-left: 40px;\n"
-"}\n"
-"QListWidget::item:hover {\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"/*QListWidget::item:selected {\n"
-"    border-radius: 10px;\n"
-"    border: 1px solid #808080;\n"
-"    background: #313131;\n"
-"}*/\n"
-"\n"
-"QScrollBar:vertical {\n"
-"    width: 7px;\n"
-"    background: #272626;\n"
-"    margin: 10px 0px 10px 3px;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: gray;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: darkgray;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
-"    background: none;\n"
-"    height: 0px;\n"
-"    width: 0px;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}")
+                                            "    border: 2px solid #4d4d4d;\n"
+                                            "    border-top: 1px solid #4d4d4d;\n"
+                                            "    border-top-left-radius: 0px;  /* 左上角 */\n"
+                                            "    border-top-right-radius: 0px;  /* 右上角 */\n"
+                                            "    border-bottom-right-radius: 10px;  /* 右下角 */\n"
+                                            "    border-bottom-left-radius: 10px;  /* 左下角 */\n"
+                                            "    margin-top: 0px;\n"
+                                            "    padding: 10px 5px 10px 5px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "\n"
+                                            "QListWidget:focus {\n"
+                                            "    outline: none;\n"
+                                            "}\n"
+                                            "QListWidget::dropIndicator {\n"
+                                            "    color: #3d3d3d;\n"
+                                            "}\n"
+                                            "QListWidget::item{\n"
+                                            "    color: #99bdc3;\n"
+                                            "    height: 80px;\n"
+                                            "    margin-bottom: 5px;\n"
+                                            "    margin-top: 5px;\n"
+                                            "    border-radius: 10px;\n"
+                                            "    border: 1px solid #4d4d4d;\n"
+                                            "    opacity: 0.5;\n"
+                                            "    padding-left: 20px;\n"
+                                            "}\n"
+                                            "QListWidget::item:hover {\n"
+                                            "    background: #4d4d4d;\n"
+                                            "}\n"
+                                            "\n"
+                                            "/*QListWidget::item:selected {\n"
+                                            "    border-radius: 10px;\n"
+                                            "    border: 1px solid #808080;\n"
+                                            "    background: #313131;\n"
+                                            "}*/\n"
+                                            "\n"
+                                            "QScrollBar:vertical {\n"
+                                            "    width: 7px;\n"
+                                            "    background: #272626;\n"
+                                            "    margin: 10px 0px 10px 3px;\n"
+                                            "    border-radius: 2px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::handle:vertical {\n"
+                                            "    background: gray;\n"
+                                            "    border-radius: 2px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::handle:vertical:hover {\n"
+                                            "    background: darkgray;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+                                            "    background: none;\n"
+                                            "    height: 0px;\n"
+                                            "    width: 0px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                            "    background: none;\n"
+                                            "}")
         self.killerChooseList.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.killerChooseList.setDragEnabled(True)
         self.killerChooseList.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
@@ -799,8 +825,8 @@ class Ui_MainWindow(object):
         self.targetFrame.setMinimumSize(QtCore.QSize(274, 0))
         self.targetFrame.setMaximumSize(QtCore.QSize(274, 16777215))
         self.targetFrame.setStyleSheet("QWidget#targetFrame {\n"
-"    width: 277;\n"
-"}")
+                                       "    width: 277;\n"
+                                       "}")
         self.targetFrame.setObjectName("targetFrame")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.targetFrame)
         self.verticalLayout_6.setContentsMargins(9, 0, 9, 0)
@@ -814,15 +840,15 @@ class Ui_MainWindow(object):
         self.chooseTargetHint.setSizePolicy(sizePolicy)
         self.chooseTargetHint.setMinimumSize(QtCore.QSize(0, 38))
         self.chooseTargetHint.setStyleSheet("font: 9pt \"微软雅黑\";\n"
-"color: #99bdc3;\n"
-"height: 50px;\n"
-"\n"
-"border-top-left-radius: 10px;  /* 左上角 */\n"
-"border-top-right-radius: 10px;  /* 右上角 */\n"
-"border-bottom-right-radius: 0px;  /* 右下角 */\n"
-"border-bottom-left-radius: 0px;  /* 左下角 */\n"
-"border: 2px solid #4d4d4d;\n"
-"border-bottom: 1px solid #4d4d4d;")
+                                            "color: #99bdc3;\n"
+                                            "height: 50px;\n"
+                                            "\n"
+                                            "border-top-left-radius: 10px;  /* 左上角 */\n"
+                                            "border-top-right-radius: 10px;  /* 右上角 */\n"
+                                            "border-bottom-right-radius: 0px;  /* 右下角 */\n"
+                                            "border-bottom-left-radius: 0px;  /* 左下角 */\n"
+                                            "border: 2px solid #4d4d4d;\n"
+                                            "border-bottom: 1px solid #4d4d4d;")
         self.chooseTargetHint.setObjectName("chooseTargetHint")
         self.verticalLayout_6.addWidget(self.chooseTargetHint)
         self.killerTargetList = QtWidgets.QListWidget(self.targetFrame)
@@ -832,63 +858,63 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.killerTargetList.sizePolicy().hasHeightForWidth())
         self.killerTargetList.setSizePolicy(sizePolicy)
         self.killerTargetList.setStyleSheet("QListWidget{\n"
-"    border: 2px solid #4d4d4d;\n"
-"    border-top: 1px solid #4d4d4d;\n"
-"    border-bottom: 1px solid #4d4d4d;\n"
-"    padding: 10px 5px 10px 5px;\n"
-"}\n"
-"\n"
-"QListWidget:focus {\n"
-"    outline: none;\n"
-"}\n"
-"QListWidget::dropIndicator {\n"
-"    color: #3d3d3d;\n"
-"}\n"
-"QListWidget::item{\n"
-"    color: #99bdc3;\n"
-"    height: 80px;\n"
-"    margin-bottom: 5px;\n"
-"    margin-top: 5px;\n"
-"    border-radius: 10px;\n"
-"    border: 1px solid #4d4d4d;\n"
-"    opacity: 0.5;\n"
-"    padding-left: 40px;\n"
-"}\n"
-"QListWidget::item:hover {\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QListWidget::item:selected {\n"
-"    border-radius: 10px;\n"
-"    border: 1px solid #808080;\n"
-"    background: #313131;\n"
-"}\n"
-"\n"
-"QScrollBar:vertical {\n"
-"    width: 7px;\n"
-"    background: #272626;\n"
-"    margin: 10px 0px 10px 3px;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: gray;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: darkgray;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
-"    background: none;\n"
-"    height: 0px;\n"
-"    width: 0px;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}")
+                                            "    border: 2px solid #4d4d4d;\n"
+                                            "    border-top: 1px solid #4d4d4d;\n"
+                                            "    border-bottom: 1px solid #4d4d4d;\n"
+                                            "    padding: 10px 5px 10px 5px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QListWidget:focus {\n"
+                                            "    outline: none;\n"
+                                            "}\n"
+                                            "QListWidget::dropIndicator {\n"
+                                            "    color: #3d3d3d;\n"
+                                            "}\n"
+                                            "QListWidget::item{\n"
+                                            "    color: #99bdc3;\n"
+                                            "    height: 80px;\n"
+                                            "    margin-bottom: 5px;\n"
+                                            "    margin-top: 5px;\n"
+                                            "    border-radius: 10px;\n"
+                                            "    border: 1px solid #4d4d4d;\n"
+                                            "    opacity: 0.5;\n"
+                                            "    padding-left: 20px;\n"
+                                            "}\n"
+                                            "QListWidget::item:hover {\n"
+                                            "    background: #4d4d4d;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QListWidget::item:selected {\n"
+                                            "    border-radius: 10px;\n"
+                                            "    border: 1px solid #808080;\n"
+                                            "    background: #313131;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar:vertical {\n"
+                                            "    width: 7px;\n"
+                                            "    background: #272626;\n"
+                                            "    margin: 10px 0px 10px 3px;\n"
+                                            "    border-radius: 2px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::handle:vertical {\n"
+                                            "    background: gray;\n"
+                                            "    border-radius: 2px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::handle:vertical:hover {\n"
+                                            "    background: darkgray;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+                                            "    background: none;\n"
+                                            "    height: 0px;\n"
+                                            "    width: 0px;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                            "    background: none;\n"
+                                            "}")
         self.killerTargetList.setDragEnabled(True)
         self.killerTargetList.setDragDropMode(QtWidgets.QAbstractItemView.DragDrop)
         self.killerTargetList.setDefaultDropAction(QtCore.Qt.MoveAction)
@@ -902,27 +928,27 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.emptyTargetButtom.sizePolicy().hasHeightForWidth())
         self.emptyTargetButtom.setSizePolicy(sizePolicy)
         self.emptyTargetButtom.setStyleSheet("QPushButton{\n"
-"    height: 36px;\n"
-"\n"
-"    border-top-left-radius: 0px;  /* 左上角 */\n"
-"    border-top-right-radius: 0px;  /* 右上角 */\n"
-"    border-bottom-right-radius: 10px;  /* 右下角 */\n"
-"    border-bottom-left-radius: 10px;  /* 左下角 */\n"
-"    border: 2px solid #4d4d4d;\n"
-"    border-top: 1px solid #4d4d4d;\n"
-"    font: 21px \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"    margin-top: 0px;\n"
-"    margin-bottom: 0px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background: #3d3d3d\n"
-"}")
+                                             "    height: 36px;\n"
+                                             "\n"
+                                             "    border-top-left-radius: 0px;  /* 左上角 */\n"
+                                             "    border-top-right-radius: 0px;  /* 右上角 */\n"
+                                             "    border-bottom-right-radius: 10px;  /* 右下角 */\n"
+                                             "    border-bottom-left-radius: 10px;  /* 左下角 */\n"
+                                             "    border: 2px solid #4d4d4d;\n"
+                                             "    border-top: 1px solid #4d4d4d;\n"
+                                             "    font: 21px \"微软雅黑\";\n"
+                                             "    color: #99BDC3;\n"
+                                             "    margin-top: 0px;\n"
+                                             "    margin-bottom: 0px;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QPushButton:hover{\n"
+                                             "    background: #4d4d4d;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QPushButton:pressed{\n"
+                                             "    background: #3d3d3d\n"
+                                             "}")
         self.emptyTargetButtom.setObjectName("emptyTargetButtom")
         self.verticalLayout_6.addWidget(self.emptyTargetButtom)
         self.horizontalLayout_7.addWidget(self.targetFrame)
@@ -934,24 +960,24 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.killerStart.sizePolicy().hasHeightForWidth())
         self.killerStart.setSizePolicy(sizePolicy)
         self.killerStart.setStyleSheet("QPushButton{\n"
-"    height: 60px;\n"
-"    width: 120px;\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"    font: 25px \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"    margin-top: 20px;\n"
-"    margin-bottom: 0px;\n"
-"    width: 200px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background: #3d3d3d\n"
-"}")
+                                       "    height: 60px;\n"
+                                       "    width: 120px;\n"
+                                       "    border-radius: 10px;\n"
+                                       "    border: 2px solid #4d4d4d;\n"
+                                       "    font: 25px \"微软雅黑\";\n"
+                                       "    color: #99BDC3;\n"
+                                       "    margin-top: 20px;\n"
+                                       "    margin-bottom: 0px;\n"
+                                       "    width: 200px;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:hover{\n"
+                                       "    background: #4d4d4d;\n"
+                                       "}\n"
+                                       "\n"
+                                       "QPushButton:pressed{\n"
+                                       "    background: #3d3d3d\n"
+                                       "}")
         self.killerStart.setObjectName("killerStart")
         self.verticalLayout_5.addWidget(self.killerStart, 0, QtCore.Qt.AlignHCenter)
         self.killerStopHint = QtWidgets.QLabel(self.killerListArea)
@@ -961,11 +987,11 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.killerStopHint.sizePolicy().hasHeightForWidth())
         self.killerStopHint.setSizePolicy(sizePolicy)
         self.killerStopHint.setStyleSheet("QLabel{\n"
-"    margin-left: 20px;\n"
-"    margin-right: 20px;\n"
-"    color: #5d5d5d;\n"
-"    font: 16px \"微软雅黑\";\n"
-"}")
+                                          "    margin-left: 20px;\n"
+                                          "    margin-right: 20px;\n"
+                                          "    color: #5d5d5d;\n"
+                                          "    font: 16px \"微软雅黑\";\n"
+                                          "}")
         self.killerStopHint.setTextFormat(QtCore.Qt.AutoText)
         self.killerStopHint.setAlignment(QtCore.Qt.AlignCenter)
         self.killerStopHint.setObjectName("killerStopHint")
@@ -988,44 +1014,44 @@ class Ui_MainWindow(object):
         self.survivorTargetList = QtWidgets.QScrollArea(self.survivorTargetArea)
         self.survivorTargetList.setMinimumSize(QtCore.QSize(380, 0))
         self.survivorTargetList.setStyleSheet("QScrollArea{\n"
-"    border: 3px solid #4d4d4d;\n"
-"    border-radius: 10px;\n"
-"}\n"
-"QScrollArea:QWidget{\n"
-"    border: none;\n"
-"    border-radius: 20px;\n"
-"    background: #272626;\n"
-"}\n"
-"\n"
-"QScrollBar:vertical {\n"
-"    width: 8px;\n"
-"    background: #272626;\n"
-"    margin: 10px 0px 10px 3px;\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: gray;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: darkgray;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
-"    background: none;\n"
-"    height: 0px;\n"
-"    width: 0px;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}")
+                                              "    border: 3px solid #4d4d4d;\n"
+                                              "    border-radius: 10px;\n"
+                                              "}\n"
+                                              "QScrollArea:QWidget{\n"
+                                              "    border: none;\n"
+                                              "    border-radius: 20px;\n"
+                                              "    background: #272626;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QScrollBar:vertical {\n"
+                                              "    width: 8px;\n"
+                                              "    background: #272626;\n"
+                                              "    margin: 10px 0px 10px 3px;\n"
+                                              "    border-radius: 4px;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QScrollBar::handle:vertical {\n"
+                                              "    background: gray;\n"
+                                              "    border-radius: 2px;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QScrollBar::handle:vertical:hover {\n"
+                                              "    background: darkgray;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+                                              "    background: none;\n"
+                                              "    height: 0px;\n"
+                                              "    width: 0px;\n"
+                                              "}\n"
+                                              "\n"
+                                              "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                              "    background: none;\n"
+                                              "}")
         self.survivorTargetList.setWidgetResizable(True)
         self.survivorTargetList.setObjectName("survivorTargetList")
         self.survivorTargetContent = QtWidgets.QWidget()
-        self.survivorTargetContent.setGeometry(QtCore.QRect(0, 0, 374, 611))
+        self.survivorTargetContent.setGeometry(QtCore.QRect(0, 0, 366, 18))
         self.survivorTargetContent.setObjectName("survivorTargetContent")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.survivorTargetContent)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
@@ -1035,20 +1061,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.survivorTargetList)
         self.addSurvivorTarget = QtWidgets.QPushButton(self.survivorTargetArea)
         self.addSurvivorTarget.setStyleSheet("QPushButton{\n"
-"    height: 60px;\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"    font: 20pt \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background: #3d3d3d\n"
-"}")
+                                             "    height: 60px;\n"
+                                             "    border-radius: 10px;\n"
+                                             "    border: 2px solid #4d4d4d;\n"
+                                             "    font: 20pt \"微软雅黑\";\n"
+                                             "    color: #99BDC3;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QPushButton:hover{\n"
+                                             "    background: #4d4d4d;\n"
+                                             "}\n"
+                                             "\n"
+                                             "QPushButton:pressed{\n"
+                                             "    background: #3d3d3d\n"
+                                             "}")
         self.addSurvivorTarget.setObjectName("addSurvivorTarget")
         self.verticalLayout_9.addWidget(self.addSurvivorTarget)
         self.horizontalLayout_6.addWidget(self.survivorTargetArea)
@@ -1068,23 +1094,23 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.survivorStart.sizePolicy().hasHeightForWidth())
         self.survivorStart.setSizePolicy(sizePolicy)
         self.survivorStart.setStyleSheet("QPushButton{\n"
-"    height: 60px;\n"
-"    width: 150px;\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"    font: 20pt \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"    margin: 20px;\n"
-"    margin-bottom: 0px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background: #3d3d3d\n"
-"}")
+                                         "    height: 60px;\n"
+                                         "    width: 150px;\n"
+                                         "    border-radius: 10px;\n"
+                                         "    border: 2px solid #4d4d4d;\n"
+                                         "    font: 20pt \"微软雅黑\";\n"
+                                         "    color: #99BDC3;\n"
+                                         "    margin: 20px;\n"
+                                         "    margin-bottom: 0px;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:hover{\n"
+                                         "    background: #4d4d4d;\n"
+                                         "}\n"
+                                         "\n"
+                                         "QPushButton:pressed{\n"
+                                         "    background: #3d3d3d\n"
+                                         "}")
         self.survivorStart.setObjectName("survivorStart")
         self.verticalLayout_8.addWidget(self.survivorStart)
         self.survivorStopHint = QtWidgets.QLabel(self.survivorStartArea)
@@ -1094,11 +1120,11 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.survivorStopHint.sizePolicy().hasHeightForWidth())
         self.survivorStopHint.setSizePolicy(sizePolicy)
         self.survivorStopHint.setStyleSheet("QLabel{\n"
-"    margin-left: 20px;\n"
-"    margin-right: 20px;\n"
-"    color: #5d5d5d;\n"
-"    font: 12pt \"微软雅黑\";\n"
-"}")
+                                            "    margin-left: 20px;\n"
+                                            "    margin-right: 20px;\n"
+                                            "    color: #5d5d5d;\n"
+                                            "    font: 12pt \"微软雅黑\";\n"
+                                            "}")
         self.survivorStopHint.setTextFormat(QtCore.Qt.AutoText)
         self.survivorStopHint.setAlignment(QtCore.Qt.AlignCenter)
         self.survivorStopHint.setObjectName("survivorStopHint")
@@ -1122,21 +1148,21 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.developingButton.sizePolicy().hasHeightForWidth())
         self.developingButton.setSizePolicy(sizePolicy)
         self.developingButton.setStyleSheet("QPushButton{\n"
-"    height: 100px;\n"
-"    width: 450px;\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"    font: 25px \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background: #3d3d3d\n"
-"}")
+                                            "    height: 100px;\n"
+                                            "    width: 450px;\n"
+                                            "    border-radius: 10px;\n"
+                                            "    border: 2px solid #4d4d4d;\n"
+                                            "    font: 25px \"微软雅黑\";\n"
+                                            "    color: #99BDC3;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:hover{\n"
+                                            "    background: #4d4d4d;\n"
+                                            "}\n"
+                                            "\n"
+                                            "QPushButton:pressed{\n"
+                                            "    background: #3d3d3d\n"
+                                            "}")
         self.developingButton.setObjectName("developingButton")
         self.horizontalLayout_5.addWidget(self.developingButton)
         self.contentStackedWidget.addWidget(self.statistic_widget)
@@ -1153,44 +1179,44 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.settings.sizePolicy().hasHeightForWidth())
         self.settings.setSizePolicy(sizePolicy)
         self.settings.setStyleSheet("font: 75 48px \"微软雅黑\";\n"
-"color: white;")
+                                    "color: white;")
         self.settings.setObjectName("settings")
         self.verticalLayout_11.addWidget(self.settings)
         self.scrollArea = QtWidgets.QScrollArea(self.settings_widget)
         self.scrollArea.setStyleSheet("QScrollArea{\n"
-"    border: 3px solid #4d4d4d;\n"
-"    border-radius: 10px;\n"
-"}\n"
-"QScrollArea:QWidget{\n"
-"    border: none;\n"
-"    background: #272626;\n"
-"}\n"
-"\n"
-"QScrollBar:vertical {\n"
-"    width: 8px;\n"
-"    background: #272626;\n"
-"    margin: 10px 2px 10px 1px;\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: gray;\n"
-"    border-radius: 2px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical:hover {\n"
-"    background: darkgray;\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
-"    background: none;\n"
-"    height: 0px;\n"
-"    width: 0px;\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}")
+                                      "    border: 3px solid #4d4d4d;\n"
+                                      "    border-radius: 10px;\n"
+                                      "}\n"
+                                      "QScrollArea:QWidget{\n"
+                                      "    border: none;\n"
+                                      "    background: #272626;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar:vertical {\n"
+                                      "    width: 8px;\n"
+                                      "    background: #272626;\n"
+                                      "    margin: 10px 2px 10px 1px;\n"
+                                      "    border-radius: 4px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::handle:vertical {\n"
+                                      "    background: gray;\n"
+                                      "    border-radius: 2px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::handle:vertical:hover {\n"
+                                      "    background: darkgray;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {\n"
+                                      "    background: none;\n"
+                                      "    height: 0px;\n"
+                                      "    width: 0px;\n"
+                                      "}\n"
+                                      "\n"
+                                      "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+                                      "    background: none;\n"
+                                      "}")
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
@@ -1200,8 +1226,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.label_2 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.label_2.setStyleSheet("\n"
-"    font: 32px \"微软雅黑\";\n"
-"    color: #99BDC3;")
+                                   "    font: 32px \"微软雅黑\";\n"
+                                   "    color: #99BDC3;")
         self.label_2.setObjectName("label_2")
         self.verticalLayout_12.addWidget(self.label_2)
         self.gameDirComboBox = QtWidgets.QComboBox(self.scrollAreaWidgetContents)
@@ -1211,50 +1237,50 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.gameDirComboBox.sizePolicy().hasHeightForWidth())
         self.gameDirComboBox.setSizePolicy(sizePolicy)
         self.gameDirComboBox.setStyleSheet("QComboBox{\n"
-"    height: 48px;\n"
-"    color: #cccccc;\n"
-"    font: 28px \"微软雅黑\";\n"
-"    border: 2px solid #4d4d4d;\n"
-"    border-radius: 12px;\n"
-"}\n"
-"\n"
-"QComboBox:hover{\n"
-"    border: 2px solid #8a8a8a;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down{\n"
-"    border-image: url(:/icon/icon_resources/下拉箭头.svg);\n"
-"    width: 30px;\n"
-"    height: 30px;\n"
-"    margin-top: 9px;\n"
-"    margin-right: 10px;\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView{\n"
-"    border: 2px solid #8a8a8a;\n"
-"    border-radius: 12px;\n"
-"    outline: none;\n"
-"    color: #cccccc;\n"
-"    font: 28px \"微软雅黑\";\n"
-"    background: #272626;\n"
-"    padding: 12px 6px 12px 6px;\n"
-"}\n"
-"\n"
-"QComboBox QAbstractItemView::item{\n"
-"    border: none;\n"
-"    outline: none;\n"
-"    height: 48px;\n"
-"    border-radius: 12px;\n"
-"    background: #272626;\n"
-"}\n"
-"QComboBox QAbstractItemView::item:selected{\n"
-"    border-radius: 12px;\n"
-"    background: #313131;\n"
-"}\n"
-"QComboBox QAbstractItemView::item:hover{\n"
-"    border-radius: 12px;\n"
-"    background: #4D4D4D;\n"
-"}")
+                                           "    height: 48px;\n"
+                                           "    color: #cccccc;\n"
+                                           "    font: 28px \"微软雅黑\";\n"
+                                           "    border: 2px solid #4d4d4d;\n"
+                                           "    border-radius: 12px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QComboBox:hover{\n"
+                                           "    border: 2px solid #8a8a8a;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QComboBox::drop-down{\n"
+                                           "    border-image: url(:/icon/icon_resources/下拉箭头.svg);\n"
+                                           "    width: 30px;\n"
+                                           "    height: 30px;\n"
+                                           "    margin-top: 9px;\n"
+                                           "    margin-right: 10px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QComboBox QAbstractItemView{\n"
+                                           "    border: 2px solid #8a8a8a;\n"
+                                           "    border-radius: 12px;\n"
+                                           "    outline: none;\n"
+                                           "    color: #cccccc;\n"
+                                           "    font: 28px \"微软雅黑\";\n"
+                                           "    background: #272626;\n"
+                                           "    padding: 12px 6px 12px 6px;\n"
+                                           "}\n"
+                                           "\n"
+                                           "QComboBox QAbstractItemView::item{\n"
+                                           "    border: none;\n"
+                                           "    outline: none;\n"
+                                           "    height: 48px;\n"
+                                           "    border-radius: 12px;\n"
+                                           "    background: #272626;\n"
+                                           "}\n"
+                                           "QComboBox QAbstractItemView::item:selected{\n"
+                                           "    border-radius: 12px;\n"
+                                           "    background: #313131;\n"
+                                           "}\n"
+                                           "QComboBox QAbstractItemView::item:hover{\n"
+                                           "    border-radius: 12px;\n"
+                                           "    background: #4D4D4D;\n"
+                                           "}")
         self.gameDirComboBox.setFrame(True)
         self.gameDirComboBox.setObjectName("gameDirComboBox")
         self.gameDirComboBox.addItem("")
@@ -1262,9 +1288,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addWidget(self.gameDirComboBox)
         self.dirErrorHint = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         self.dirErrorHint.setStyleSheet("\n"
-"    font: 16px \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"    margin-left: 5px;")
+                                        "    font: 16px \"微软雅黑\";\n"
+                                        "    color: #99BDC3;\n"
+                                        "    margin-left: 5px;")
         self.dirErrorHint.setText("")
         self.dirErrorHint.setObjectName("dirErrorHint")
         self.verticalLayout_12.addWidget(self.dirErrorHint)
@@ -1279,23 +1305,23 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.saveSettings.sizePolicy().hasHeightForWidth())
         self.saveSettings.setSizePolicy(sizePolicy)
         self.saveSettings.setStyleSheet("QPushButton{\n"
-"    height: 50px;\n"
-"    width: 220px;\n"
-"    border-radius: 10px;\n"
-"    border: 2px solid #4d4d4d;\n"
-"    font: 20px \"微软雅黑\";\n"
-"    color: #99BDC3;\n"
-"    margin-top: 10px;\n"
-"    margin-bottom: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"    background: #4d4d4d;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background: #3d3d3d\n"
-"}")
+                                        "    height: 50px;\n"
+                                        "    width: 220px;\n"
+                                        "    border-radius: 10px;\n"
+                                        "    border: 2px solid #4d4d4d;\n"
+                                        "    font: 20px \"微软雅黑\";\n"
+                                        "    color: #99BDC3;\n"
+                                        "    margin-top: 10px;\n"
+                                        "    margin-bottom: 20px;\n"
+                                        "}\n"
+                                        "\n"
+                                        "QPushButton:hover{\n"
+                                        "    background: #4d4d4d;\n"
+                                        "}\n"
+                                        "\n"
+                                        "QPushButton:pressed{\n"
+                                        "    background: #3d3d3d\n"
+                                        "}")
         self.saveSettings.setObjectName("saveSettings")
         self.verticalLayout_11.addWidget(self.saveSettings, 0, QtCore.Qt.AlignHCenter)
         self.contentStackedWidget.addWidget(self.settings_widget)
@@ -1307,8 +1333,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
-        self.minimizeButton.clicked.connect(MainWindow.showMinimized) # type: ignore
-        self.closeButton.clicked.connect(MainWindow.close) # type: ignore
+        self.minimizeButton.clicked.connect(MainWindow.showMinimized)  # type: ignore
+        self.closeButton.clicked.connect(MainWindow.close)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1321,7 +1347,8 @@ class Ui_MainWindow(object):
         self.killerTargetType.setItemText(2, _translate("MainWindow", "配件"))
         self.searchKillerItem.setPlaceholderText(_translate("MainWindow", "搜索..."))
         self.killerChooseList.setSortingEnabled(False)
-        self.chooseTargetHint.setText(_translate("MainWindow", "<html><head/><body><p>从左边拖拽物品以添加，拖回以删除</p></body></html>"))
+        self.chooseTargetHint.setText(
+            _translate("MainWindow", "<html><head/><body><p>从左边拖拽物品以添加，拖回以删除</p></body></html>"))
         self.emptyTargetButtom.setText(_translate("MainWindow", "清空"))
         self.killerStart.setText(_translate("MainWindow", "Start"))
         self.killerStopHint.setText(_translate("MainWindow", "点击Start以开始"))
@@ -1337,10 +1364,12 @@ class Ui_MainWindow(object):
         self.gameDirComboBox.setItemText(1, _translate("MainWindow", "选择目录..."))
         self.saveSettings.setText(_translate("MainWindow", "保存"))
 
+
 from . import guiresources
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
