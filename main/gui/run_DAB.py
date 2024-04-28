@@ -28,6 +28,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton.clicked.connect(self.settingsPage)
         # 统计页面彩蛋
         self.developingButton.clicked.connect(self.devButtonEasterEgg)
+
+
         # 切换杀手
         for killerRadioButton in self.killerList.findChildren(QRadioButton):
             killerRadioButton.toggled.connect(self.killerToggled)
