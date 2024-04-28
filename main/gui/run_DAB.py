@@ -17,6 +17,8 @@ auto_offering_dir = auto_ui_dir + '\\Favors\\'
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QIcon(r'.\icon_resources\escapeCake.png'))
+        self.setWindowFlag(Qt.FramelessWindowHint)
         # 初始化config.json
         self.initializeConfig()
 

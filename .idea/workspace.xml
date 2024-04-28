@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="在./dev中添加dropEvent更改提示">
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="重写QListWidget的dropEvent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/dirInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/dirInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -367,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714283396799</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="重写QListWidget的dropEvent">
+      <option name="closed" value="true" />
+      <created>1714298592858</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1714298592858</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -395,9 +402,9 @@
     <MESSAGE value="选择屠夫更新targetlist&#10;todo:&#10;config.json读写" />
     <MESSAGE value="ListWidget中Item移动检测" />
     <MESSAGE value="更新了什么我也希腊奶" />
-    <MESSAGE value="重写QListWidget的dropEvent" />
     <MESSAGE value="在./dev中添加dropEvent更改提示" />
-    <option name="LAST_COMMIT_MESSAGE" value="在./dev中添加dropEvent更改提示" />
+    <MESSAGE value="重写QListWidget的dropEvent" />
+    <option name="LAST_COMMIT_MESSAGE" value="重写QListWidget的dropEvent" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
