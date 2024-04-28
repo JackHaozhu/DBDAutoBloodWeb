@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="更新了什么我也希腊奶">
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="重写QListWidget的dropEvent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/DAB.ui" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/PyCharm/Projects/DBDAutoBloodWeb/main/gui/icon_resources/backgrounds/items&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.notifications&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;ChangesTree.GroupingKeys&quot;: [
@@ -326,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714233019039</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="重写QListWidget的dropEvent">
+      <option name="closed" value="true" />
+      <created>1714270369167</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1714270369167</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -354,7 +361,8 @@
     <MESSAGE value="选择屠夫更新targetlist&#10;todo:&#10;config.json读写" />
     <MESSAGE value="ListWidget中Item移动检测" />
     <MESSAGE value="更新了什么我也希腊奶" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新了什么我也希腊奶" />
+    <MESSAGE value="重写QListWidget的dropEvent" />
+    <option name="LAST_COMMIT_MESSAGE" value="重写QListWidget的dropEvent" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

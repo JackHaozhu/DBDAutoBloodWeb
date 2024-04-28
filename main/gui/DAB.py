@@ -13,7 +13,19 @@ from PyQt5.QtCore import Qt, pyqtSignal
 
 QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 
-
+def select_sig_item(signame):
+    item_widget = QtWidgets.QWidget()
+    root = QtWidgets.QHBoxLayout()
+    chk = QtWidgets.QCheckBox()
+    name_label = QtWidgets.QLabel(signame)
+    name_label.setObjectName('signame')
+    value_label = QtWidgets.QLabel('value')
+    value_label.setObjectName(signame + '_value')
+    root.addWidget(chk, 0, Qt.AlignLeft)
+    root.addWidget(name_label, 1, Qt.AlignLeft)
+    root.addWidget(value_label, 0, Qt.AlignRight)
+    item_widget.setLayout(root)
+    return item_widget
 class CustomListWidget(QtWidgets.QListWidget):
     task_data_signal = pyqtSignal(list)
 
@@ -27,14 +39,33 @@ class CustomListWidget(QtWidgets.QListWidget):
         print('_select_current_index:', index)
 
     def dropEvent(self, QDropEvent):
-        # pos = QDropEvent.pos()
-        # current_item = self.itemAt(pos)
-        # current_index = self.indexFromItem(current_item)
-        # current_row = current_index.row()
-        # if current_row == -1:
-        #     current_row = self.count()
-        # print('current_row:', current_row)
-        # source_Widget = QDropEvent.source()
+        pos = QDropEvent.pos()
+        current_item = self.itemAt(pos)
+        current_index = self.indexFromItem(current_item)
+        current_row = current_index.row()
+        if current_row == -1:
+            current_row = self.count()
+        print('current_row:', current_row)
+        source_Widget = QDropEvent.source()
+        item = source_Widget.selectedItems()
+        text = item.text()
+        if not text:
+            w = source_Widget.itemWidget(item)
+            label = w.findChild(QtWidgets.QLabel, 'signame')
+            text = label.text()
+            print(text)
+        row_index = source_Widget.indexFromItem(item).row()
+        source_Widget.takeItem(row_index)
+
+        new_item = select_sig_item(text)
+        item = QtWidgets.QListWidgetItem()
+        self.insertItem(current_row, item)
+        self.setItemWidget(item, new_item)
+
+        if self != source_Widget:
+            old_item = QtWidgets.QListWidgetItem(text)
+            source_Widget.insertItem(row_index, old_item)
+
         print('congrats')
 
 
