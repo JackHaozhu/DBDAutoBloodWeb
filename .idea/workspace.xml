@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="重写QListWidget的dropEvent">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/DAB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/gui/run_DAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/gui/run_DAB.py" afterDir="false" />
-    </list>
+    <list default="true" id="8c386042-f048-47c8-a410-34be8840b4c4" name="更改" comment="重写QListWidget的dropEvent" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -374,7 +370,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714298592858</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="重写QListWidget的dropEvent">
+      <option name="closed" value="true" />
+      <created>1714299441606</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1714299441606</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
