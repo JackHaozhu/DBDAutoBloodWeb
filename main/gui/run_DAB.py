@@ -42,9 +42,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             killerRadioButton.toggled.connect(self.killerToggled)
         # 拖动杀手Item事件
         self.killerChooseList.itemDropped.connect(self.killerItemMoved)
-        # self.killerChooseList.itemChanged.connect(self.killerItemMoved)
-        # self.killerTargetList.itemChanged.connect(self.killerItemMoved)
-        # self.killerChooseList.itemPressed.connect(self.killerItemMoved)
         # 初始化页面至 主页-杀手
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
