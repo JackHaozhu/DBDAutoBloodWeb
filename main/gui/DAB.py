@@ -19,38 +19,54 @@ import json
 # 自定义新的ListWidget，重写dropEvent
 class CustomSourceListWidget(QtWidgets.QListWidget):
     task_data_signal = pyqtSignal(list)
+    itemDropped = pyqtSignal(QtWidgets.QListWidgetItem)
 
     def __init__(self, parent=None):
         super(CustomSourceListWidget, self).__init__(parent)
 
-    def dropEvent(self, QDropEvent):
-        print('drop event occurred')  # debug
-        killers_offerings_list = list(dirInfo.offerings['killers'].keys())
-        source_Widget = QDropEvent.source()
-        print('Source List:', source_Widget.objectName())  # debug
-        selected_Item = source_Widget.selectedItems()[0]
-        print(selected_Item.text())
-        position = 0
-        current_items = []
-        for i in range(self.count()):
-            current_items.append(self.item(i).text())
-        print('original current_items', current_items)  # debug
-        print('length of current_items', len(current_items))
-        for index, key in enumerate(killers_offerings_list):
-            if len(current_items) > index and current_items[index] != dirInfo.offerings['killers'][key]['name'][0]:
-                current_items.insert(index, 'temp')
-                print('current_items[index]', current_items[index])
-            if selected_Item.text() in dirInfo.offerings['killers'][key]['name']:
-                position = index
-        print('position:', position)  # debug
-        print('unprocessed current_items:', current_items)  # debug
-        current_items[position] = selected_Item.text()
-        temp_list = [item for item in current_items if item != 'temp']
-        current_items = temp_list
-        print('processed current_items:', current_items)  # debug
-        insert_index = current_items.index(selected_Item.text())
-        print('insert_index:', insert_index)  # debug
-        self.insertItem(insert_index+1, selected_Item)
+    def dropEvent(self, event):
+        item = QtWidgets.QListWidgetItem(event.mimeData().text())
+        self.addItem(item)
+        self.itemDropped.emit(item)
+
+    # 我是啥比
+    # def dropEvent(self, QDropEvent):
+        # print('drop event occurred')  # debug
+        # # 获取屠夫通用祭品列表
+        # killers_offerings_list = list(dirInfo.offerings['killers'].keys())
+        # # 获取dropEvent来源List
+        # source_Widget = QDropEvent.source()
+        # print('Source List:', source_Widget.objectName())  # debug
+        # # 获取被拖拽的Item
+        # selected_Item = source_Widget.selectedItems()[0]
+        # print(selected_Item.text())
+        # position = 0
+        # current_items = []
+        # for i in range(self.count()):
+        #     # 获取当前List中Item列表
+        #     current_items.append(self.item(i).text())
+        # print('original current_items', current_items)  # debug
+        # print('length of current_items', len(current_items))
+        #
+        # for index, key in enumerate(killers_offerings_list):
+        #     # 为当前List中Item列表填充占位符
+        #     if current_items[index] != dirInfo.offerings['killers'][key]['name'][0]:
+        #         if len(current_items) > index:
+        #             current_items.insert(index, 'temp')
+        #             print('current_items[index]', current_items[index])
+        #         else:
+        #             current_items.append('temp')
+        #     if selected_Item.text() in dirInfo.offerings['killers'][key]['name']:
+        #         position = index
+        # print('position:', position)  # debug
+        # print('unprocessed current_items:', current_items)  # debug
+        # current_items[position] = selected_Item.text()
+        # temp_list = [item for item in current_items if item != 'temp']
+        # current_items = temp_list
+        # print('processed current_items:', current_items)  # debug
+        # insert_index = current_items.index(selected_Item.text())
+        # print('insert_index:', insert_index)  # debug
+        # self.insertItem(insert_index+1, selected_Item)
 
 
 
