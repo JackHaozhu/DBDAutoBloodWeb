@@ -1,24 +1,30 @@
 import os
 import json
+
+from PyQt5 import QtCore
+
 from . import dirInfo
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QMainWindow, QRadioButton, QListView, QFileDialog, QListWidgetItem
+from PyQt5.QtWidgets import QMainWindow, QRadioButton, QListView, QFileDialog, QListWidgetItem, QListWidget
 from PyQt5.QtGui import QIcon
 from .DAB import Ui_MainWindow  # 导入通过pyuic5转换生成的UI文件中的类
+from PyQt5.QtCore import pyqtSignal
 
 if dirInfo.get_program_install_location('黎明杀机') is not None:
     auto_game_dir = dirInfo.get_program_install_location('黎明杀机')
 auto_ui_dir = auto_game_dir + r'\DeadByDaylight\Content\UI\Icons'
 auto_char_dir = auto_ui_dir + '\\CharPortraits\\'
 auto_offering_dir = auto_ui_dir + '\\Favors\\'
+QtCore.QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowIcon(QIcon(r'.\icon_resources\escapeCake.png'))
-        # self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setWindowFlag(Qt.FramelessWindowHint)
         # 初始化config.json
         self.initializeConfig()
 
@@ -30,7 +36,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.radioButton.clicked.connect(self.settingsPage)
         # 统计页面彩蛋
         self.developingButton.clicked.connect(self.devButtonEasterEgg)
-
 
         # 切换杀手
         for killerRadioButton in self.killerList.findChildren(QRadioButton):

@@ -4,6 +4,8 @@ import cv2
 import numpy as np
 import keyboard
 import sys
+import pygetwindow as gw
+
 
 # 关闭pyautogui的鼠标从边缘移动检测
 pyautogui.FAILSAFE = False
