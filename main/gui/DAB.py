@@ -17,57 +17,18 @@ import json
 # 自定义新的ListWidget，重写dropEvent
 class CustomSourceListWidget(QtWidgets.QListWidget):
     task_data_signal = pyqtSignal(list)
-    itemDropped = pyqtSignal(QtWidgets.QListWidgetItem)
+    itemDropped = pyqtSignal(QtWidgets.QListWidgetItem, QtWidgets.QListWidget)
 
     def __init__(self, parent=None):
         super(CustomSourceListWidget, self).__init__(parent)
 
-    # def dropEvent(self, event):
-    #     print('event', event)
-    #     print('source item', event.source().selectedItems()[0])
-    #     item = QtWidgets.QListWidgetItem(event.source().selectedItems()[0])
-    #     print('item text', item.text())
-    #     self.insertItem(0, item)
-    #     self.itemDropped.emit(item)
-    #     print('congrats')
-
-    def dropEvent(self, QDropEvent):
-        print('drop event occurred')  # debug
-        # 获取屠夫通用祭品列表
-        killers_offerings_list = list(dirInfo.offerings['killers'].keys())
-        # 获取dropEvent来源List
-        source_Widget = QDropEvent.source()
-        print('Source List:', source_Widget.objectName())  # debug
-        # 获取被拖拽的Item
-        selected_Item = source_Widget.selectedItems()[0]
-        print('selected_Item.text()', selected_Item.text())
-        position = 0
-        current_items = []
-        for i in range(self.count()):
-            # 获取当前List中Item列表
-            current_items.append(self.item(i).text())
-        print('original current_items', current_items)  # debug
-        print('length of current_items', len(current_items))
-
-        for index, key in enumerate(killers_offerings_list):
-            # 为当前List中Item列表填充占位符
-            if current_items[index] != dirInfo.offerings['killers'][key]['name'][0]:
-                if len(current_items) > index:
-                    current_items.insert(index, 'temp')
-                    print('current_items[index]', current_items[index])
-                else:
-                    current_items.append('temp')
-            if selected_Item.text() in dirInfo.offerings['killers'][key]['name']:
-                position = index
-        print('position:', position)  # debug
-        print('unprocessed current_items:', current_items)  # debug
-        current_items[position] = selected_Item.text()
-        temp_list = [item for item in current_items if item != 'temp']
-        current_items = temp_list
-        print('processed current_items:', current_items)  # debug
-        insert_index = current_items.index(selected_Item.text())
-        print('insert_index:', insert_index)  # debug
-        self.insertItem(insert_index, selected_Item)
+    def dropEvent(self, event):
+        super().dropEvent(event)
+        print('Drop Event Occurred!')
+        source = event.source()
+        print('Source Name', source.objectName())
+        item = event.source().selectedItems()[0]
+        self.itemDropped.emit(item, source)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1397,12 +1358,12 @@ class Ui_MainWindow(object):
 
 from . import guiresources
 
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+# if __name__ == "__main__":
+#     import sys
+#
+#     app = QtWidgets.QApplication(sys.argv)
+#     MainWindow = QtWidgets.QMainWindow()
+#     ui = Ui_MainWindow()
+#     ui.setupUi(MainWindow)
+#     MainWindow.show()
+#     sys.exit(app.exec_())

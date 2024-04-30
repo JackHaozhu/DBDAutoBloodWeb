@@ -136,11 +136,37 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
 
     # 杀手物品列表拖动事件，刷新列表，写入config
-    def killerItemMoved(self):
-        print('Item Changed!')
+    def killerItemMoved(self, item, source):
+        item2bDeleted = self.killerChooseList.findItems(item.text(), Qt.MatchExactly)[0]
+        new_item = self.killerChooseList.takeItem(self.killerChooseList.row(item2bDeleted))
+        print('Signal Connected!')
+        print('Source Item:', item.text())
+        print('Source List:', source.objectName())
+        current_items_list = []
         for i in range(self.killerChooseList.count()):
             item_name = self.killerChooseList.item(i).text()
-            print(item_name)
+            current_items_list.append(item_name)
+        print('Current Item List', current_items_list)
+        killers_offerings_list = list(dirInfo.offerings['killers'].keys())
+        position = 0
+        for index, key in enumerate(killers_offerings_list):
+            if index < len(current_items_list):
+                print('current_items_list[index] != dirInfo.offerings[\'killers\'][key][\'name\'][0]',current_items_list[index], dirInfo.offerings['killers'][key]['name'][0])
+                if current_items_list[index] != dirInfo.offerings['killers'][key]['name'][0]:
+                    current_items_list.insert(index, 'temp')
+            else:
+                current_items_list.append('temp')
+            if item.text() == dirInfo.offerings['killers'][key]['name'][0]:
+                position = index
+        temp_list = current_items_list
+        temp_list[position] = item.text()
+        print('Temp List:', temp_list)
+        current_items_list = [item for item in current_items_list if item != 'temp']
+        print('Processed Current Item List:', current_items_list)
+        insert_index = current_items_list.index(item.text())
+        self.killerChooseList.insertItem(insert_index, new_item)
+
+
 
     # 切换杀手，加载其配件与祭品，读取config
     def killerToggled(self, checked):
