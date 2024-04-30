@@ -126,15 +126,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             # print(killer_name)
             # print(offering_name)
             item = QListWidgetItem(offering_name)
-            if killer_name in data['killer_config'] and offering_name in data['killer_config'][killer_name]:
-                self.killerTargetList.addItem(item)
-            else:
+            if killer_name in data['killer_config'] and offering_name not in data['killer_config'][killer_name]:
                 self.killerChooseList.addItem(item)
             file_name = 'iconFavors_' + offering_name + '.png'
             icon_path = offering_path + file_name
             item.setIcon(QIcon(icon_path))  # todo 叠加稀有度背景
             item.setTextAlignment(Qt.AlignCenter)
             item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
+        for chosen_offering in data['killer_config'][killer_name]:
+            item = QListWidgetItem(chosen_offering)
+            self.killerTargetList.addItem(item)
+            file_name = 'iconFavors_' + chosen_offering + '.png'
+            icon_path = offering_path + file_name
+            item.setIcon(QIcon(icon_path))
+            item.setTextAlignment(Qt.AlignCenter)
+            item.setText(dirInfo.offerings['killers'][chosen_offering]['name'][0])
 
     # 杀手物品列表拖动事件，刷新列表，写入config
     def killerItemMoved(self, item, source):
@@ -197,10 +203,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     item_name = key
                     break
             current_item_list.append(item_name)
-        print(current_item_list)
+        print('unprocessed list:', current_item_list)
+        temp_list = current_item_list
+        current_item_list = []
+        for item in temp_list:
+            if item not in current_item_list:
+                current_item_list.append(item)
+        print('processed list:', current_item_list)
         current_killer = self.getCurrentKiller()
         data['killer_config'][current_killer] = current_item_list
-        print(data['killer_config'][current_killer])
         json.dump(data, open('config.json', 'w'), indent=4)
 
     def getCurrentKiller(self):
@@ -217,25 +228,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if checked:
             print(f'{toggledButton.objectName()} is checked!')
             self.loadKillerItems(toggledButton.objectName())
-            # data = json.load(open('config.json', 'r'))
-            # if data['game_dir']['index'] == 0:
-            #     offering_path = auto_offering_dir
-            # else:
-            #     offering_path = data['game_dir']['dir']
-            # print(f'{toggledButton.objectName()} is checked!\nLoading {toggledButton.objectName()}\'s offerings and add-ons')
-            # common_offering_list = list(dirInfo.offerings['killers'].keys())
-            # print(common_offering_list)
-            # self.killerChooseList.clear()
-            # for offering_name in common_offering_list:
-            #     print(f'adding {offering_name}')
-            #     print(dirInfo.offerings['killers'][offering_name]['name'])
-            #     item = QListWidgetItem(offering_name)
-            #     self.killerChooseList.addItem(item)
-            #     file_name = 'iconFavors_' + offering_name + '.png'
-            #     icon_path = offering_path + file_name
-            #     item.setIcon(QIcon(icon_path))
-            #     item.setTextAlignment(Qt.AlignCenter)
-            #     item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
     # 初始化选择目录下拉菜单
