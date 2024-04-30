@@ -15,12 +15,12 @@ import json
 
 
 # 自定义新的ListWidget，重写dropEvent
-class CustomSourceListWidget(QtWidgets.QListWidget):
+class CustomListWidget(QtWidgets.QListWidget):
     task_data_signal = pyqtSignal(list)
     itemDropped = pyqtSignal(QtWidgets.QListWidgetItem, QtWidgets.QListWidget)
 
     def __init__(self, parent=None):
-        super(CustomSourceListWidget, self).__init__(parent)
+        super(CustomListWidget, self).__init__(parent)
 
     def dropEvent(self, event):
         super().dropEvent(event)
@@ -729,7 +729,7 @@ class Ui_MainWindow(object):
         self.searchKillerItem.setText("")
         self.searchKillerItem.setObjectName("searchKillerItem")
         self.verticalLayout_7.addWidget(self.searchKillerItem)
-        self.killerChooseList = CustomSourceListWidget(self.chooseSearchFrame)
+        self.killerChooseList = CustomListWidget(self.chooseSearchFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -842,7 +842,7 @@ class Ui_MainWindow(object):
                                             "border-bottom: 1px solid #4d4d4d;")
         self.chooseTargetHint.setObjectName("chooseTargetHint")
         self.verticalLayout_6.addWidget(self.chooseTargetHint)
-        self.killerTargetList = QtWidgets.QListWidget(self.targetFrame)
+        self.killerTargetList = CustomListWidget(self.targetFrame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

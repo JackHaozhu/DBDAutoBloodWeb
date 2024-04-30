@@ -42,6 +42,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             killerRadioButton.toggled.connect(self.killerToggled)
         # 拖动杀手Item事件
         self.killerChooseList.itemDropped.connect(self.killerItemMoved)
+        self.killerTargetList.itemDropped.connect(self.killerTargetMoved)
         # 初始化页面至 主页-杀手
         self.contentStackedWidget.setCurrentIndex(0)
         self.chooseType.setCurrentIndex(0)
@@ -139,19 +140,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def killerItemMoved(self, item, source):
         item2bDeleted = self.killerChooseList.findItems(item.text(), Qt.MatchExactly)[0]
         new_item = self.killerChooseList.takeItem(self.killerChooseList.row(item2bDeleted))
-        print('Signal Connected!')
-        print('Source Item:', item.text())
-        print('Source List:', source.objectName())
+        print('Signal Connected!')  # debug
+        print('Source Item:', item.text())  # debug
+        print('Source List:', source.objectName())  # debug
         current_items_list = []
         for i in range(self.killerChooseList.count()):
             item_name = self.killerChooseList.item(i).text()
             current_items_list.append(item_name)
-        print('Current Item List', current_items_list)
+        print('Current Item List', current_items_list)  # debug
         killers_offerings_list = list(dirInfo.offerings['killers'].keys())
         position = 0
         for index, key in enumerate(killers_offerings_list):
             if index < len(current_items_list):
-                print('current_items_list[index] != dirInfo.offerings[\'killers\'][key][\'name\'][0]',current_items_list[index], dirInfo.offerings['killers'][key]['name'][0])
                 if current_items_list[index] != dirInfo.offerings['killers'][key]['name'][0]:
                     current_items_list.insert(index, 'temp')
             else:
@@ -160,13 +160,56 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 position = index
         temp_list = current_items_list
         temp_list[position] = item.text()
-        print('Temp List:', temp_list)
+        print('Temp List:', temp_list)  # debug
         current_items_list = [item for item in current_items_list if item != 'temp']
-        print('Processed Current Item List:', current_items_list)
+        print('Processed Current Item List:', current_items_list)  # debug
         insert_index = current_items_list.index(item.text())
         self.killerChooseList.insertItem(insert_index, new_item)
 
+        data = json.load(open('config.json', 'r'))
+        current_item_list = []
+        print('count', self.killerTargetList.count())
+        killers_offerings_list = list(dirInfo.offerings['killers'].keys())
+        for i in range(self.killerTargetList.count()):
+            item_name = self.killerTargetList.item(i).text()
+            print(item_name)
+            for index, key in enumerate(killers_offerings_list):
+                if item_name == dirInfo.offerings['killers'][key]['name'][0]:
+                    item_name = key
+                    break
+            current_item_list.append(item_name)
+        print(current_item_list)
+        current_killer = self.getCurrentKiller()
+        data['killer_config'][current_killer] = current_item_list
+        print(data['killer_config'][current_killer])
+        json.dump(data, open('config.json', 'w'), indent=4)
 
+    def killerTargetMoved(self, item, source):
+        data = json.load(open('config.json', 'r'))
+        current_item_list = []
+        print('count', self.killerTargetList.count())
+        killers_offerings_list = list(dirInfo.offerings['killers'].keys())
+        for i in range(self.killerTargetList.count()):
+            item_name = self.killerTargetList.item(i).text()
+            print(item_name)
+            for index, key in enumerate(killers_offerings_list):
+                if item_name == dirInfo.offerings['killers'][key]['name'][0]:
+                    item_name = key
+                    break
+            current_item_list.append(item_name)
+        print(current_item_list)
+        current_killer = self.getCurrentKiller()
+        data['killer_config'][current_killer] = current_item_list
+        print(data['killer_config'][current_killer])
+        json.dump(data, open('config.json', 'w'), indent=4)
+
+    def getCurrentKiller(self):
+        for button in self.killerList.findChildren(QRadioButton):
+            if button.isChecked():
+                current_killer = button.objectName()
+                print('current_killer', current_killer)
+                break
+        return current_killer
 
     # 切换杀手，加载其配件与祭品，读取config
     def killerToggled(self, checked):
@@ -195,7 +238,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #     item.setText(dirInfo.offerings['killers'][offering_name]['name'][0])
         else:
             print(f'{toggledButton.objectName()} is unchecked!')
-
     # 初始化选择目录下拉菜单
     def initChooseDir(self):
         data = json.load(open('config.json', 'r'))
