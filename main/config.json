@@ -5,6 +5,8 @@
     },
     "killer_config": {
         "TheTrapper": [
+            "wardBlack",
+            "momentoMoriEbony",
             "momentoMoriEbony"
         ]
     },

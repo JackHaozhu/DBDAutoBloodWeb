@@ -172,23 +172,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         insert_index = current_items_list.index(item.text())
         self.killerChooseList.insertItem(insert_index, new_item)
 
-        data = json.load(open('config.json', 'r'))
-        current_item_list = []
-        print('count', self.killerTargetList.count())
-        killers_offerings_list = list(dirInfo.offerings['killers'].keys())
-        for i in range(self.killerTargetList.count()):
-            item_name = self.killerTargetList.item(i).text()
-            print(item_name)
-            for index, key in enumerate(killers_offerings_list):
-                if item_name == dirInfo.offerings['killers'][key]['name'][0]:
-                    item_name = key
-                    break
-            current_item_list.append(item_name)
-        print(current_item_list)
-        current_killer = self.getCurrentKiller()
-        data['killer_config'][current_killer] = current_item_list
-        print(data['killer_config'][current_killer])
-        json.dump(data, open('config.json', 'w'), indent=4)
+        # data = json.load(open('config.json', 'r'))
+        # current_item_list = []
+        # print('count', self.killerTargetList.count())
+        # killers_offerings_list = list(dirInfo.offerings['killers'].keys())
+        # for i in range(self.killerTargetList.count()):
+        #     item_name = self.killerTargetList.item(i).text()
+        #     print(item_name)
+        #     for index, key in enumerate(killers_offerings_list):
+        #         if item_name == dirInfo.offerings['killers'][key]['name'][0]:
+        #             item_name = key
+        #             break
+        #     current_item_list.append(item_name)
+        # print(current_item_list)
+        # current_killer = self.getCurrentKiller()
+        # data['killer_config'][current_killer] = current_item_list
+        # print(data['killer_config'][current_killer])
+        # json.dump(data, open('config.json', 'w'), indent=4)
 
     def killerTargetMoved(self, item, source):
         data = json.load(open('config.json', 'r'))
@@ -204,11 +204,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     break
             current_item_list.append(item_name)
         print('unprocessed list:', current_item_list)
-        temp_list = current_item_list
-        current_item_list = []
-        for item in temp_list:
-            if item not in current_item_list:
-                current_item_list.append(item)
+        # temp_list = current_item_list
+        # current_item_list = []
+        # for item in temp_list:
+        #     if item not in current_item_list:
+        #         current_item_list.append(item)
         print('processed list:', current_item_list)
         current_killer = self.getCurrentKiller()
         data['killer_config'][current_killer] = current_item_list
